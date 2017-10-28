@@ -74,7 +74,7 @@ export class AutocompleteModalPage {
     }
     let self = this;
     let config = {
-      types: ['address'], // other types available in the API: 'establishment', 'regions', and 'cities'
+      types: ['geocode'], // other types available in the API: 'address', 'establishment', 'regions', and 'cities'
       input: this.autocomplete.query
     };
     this.acService.getPlacePredictions(config, function (predictions, status) {
