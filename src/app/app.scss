@@ -19,7 +19,7 @@
   background-image: url('../assets/imgs/wallpaper-dark_medium.jpg');
   background-repeat: no-repeat;
   background-position: center;
- 
+
 }
 
 .bar-buttons,.toolbar-title {
@@ -29,7 +29,7 @@
 .wraptocenter {
   display: table-cell;
   text-align: center;
- 
+
   width: 200px;
   height: 200px;
   margin-left: auto;
@@ -37,11 +37,24 @@
   display: block;
 }
 
-
 .buttoncenter {
   display: table-cell;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+/*
+#searchBar {
+  background-color:transparent !important;
+}*/
+
+
+.searchbar-input {
+    //font-size: 1.9rem !important;
+    //font-weight: 400 !important;
+    //background-color: transparent !important;
+    //color: black !important;
+    //border: 1px solid black !important;
 }
