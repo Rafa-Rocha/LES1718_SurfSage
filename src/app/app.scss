@@ -19,7 +19,6 @@
   background-image: url('../assets/imgs/wallpaper-dark_medium.jpg');
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 .bar-buttons,.toolbar-title {
@@ -57,4 +56,8 @@
     //background-color: transparent !important;
     //color: black !important;
     //border: 1px solid black !important;
+}
+
+.button-clear-ios {
+  color: white !important;
 }
