@@ -1,6 +1,10 @@
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {Component, ViewChild} from '@angular/core';
+import {ViewController} from 'ionic-angular';
+import {Keyboard} from '@ionic-native/keyboard';
+import { Places } from '../../models/places.model';
+import { PlacesService } from '../../services/places';
 /**
  * Generated class for the SearchPage page.
  *
@@ -20,9 +24,7 @@ export class SearchPage {
 }
 
 
-import {Component, ViewChild} from '@angular/core';
-import {ViewController} from 'ionic-angular';
-import {Keyboard} from '@ionic-native/keyboard';
+
 
 declare var google: any;
 
@@ -36,8 +38,11 @@ export class AutocompleteModalPage {
 
   @ViewChild('searchbar') searchBar;
 
+  private place: Places[] = [];
+  
   constructor(public viewCtrl: ViewController,
-              private keyboard: Keyboard) {
+              private keyboard: Keyboard,
+              private placesService: PlacesService) {
   }
 
   autocompleteItems: any;
@@ -65,7 +70,10 @@ export class AutocompleteModalPage {
 
   chooseItem(item: any) {
     this.viewCtrl.dismiss(item);
+    const newPlace: Places = {id: item.id, name: item.description}
     console.log(item);
+    console.log(newPlace);
+    this.placesService.getPlaces(newPlace);
   }
 
   updateSearch() {

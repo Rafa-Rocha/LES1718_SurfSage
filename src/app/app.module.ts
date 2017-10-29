@@ -10,6 +10,7 @@ import { AutocompleteModalPage } from '../pages/search/search';
 import {Keyboard} from '@ionic-native/keyboard';
 import {PrettyJsonModule} from 'angular2-prettyjson';
 import {AgmCoreModule} from '@agm/core';
+import { PlacesService } from '../services/places';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {AgmCoreModule} from '@agm/core';
     StatusBar,
     SplashScreen,
     Keyboard,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PlacesService
   ]
 })
 export class AppModule {}

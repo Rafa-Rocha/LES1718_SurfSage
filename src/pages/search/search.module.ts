@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SearchPage } from './search';
+import { PlacesService } from '../../services/places';
 
 @NgModule({
   declarations: [
@@ -9,5 +10,8 @@ import { SearchPage } from './search';
   imports: [
     IonicPageModule.forChild(SearchPage),
   ],
+  providers: [
+    PlacesService
+  ]
 })
 export class SearchPageModule {}
