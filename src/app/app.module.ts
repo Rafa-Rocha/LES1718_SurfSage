@@ -11,6 +11,8 @@ import {Keyboard} from '@ionic-native/keyboard';
 import {PrettyJsonModule} from 'angular2-prettyjson';
 import {AgmCoreModule} from '@agm/core';
 
+import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import {AgmCoreModule} from '@agm/core';
       apiKey   : 'AIzaSyBTX1dRXW-aZt_Iw77ft8I7EfQdc-h3Sog',
       libraries: ['places']
     }),
-    PrettyJsonModule
+    PrettyJsonModule,
+    HttpModule,
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
