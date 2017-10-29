@@ -65,6 +65,7 @@ export class AutocompleteModalPage {
 
   chooseItem(item: any) {
     this.viewCtrl.dismiss(item);
+    console.log(item);
   }
 
   updateSearch() {
