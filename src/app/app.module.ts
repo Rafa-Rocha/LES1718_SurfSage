@@ -6,17 +6,22 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { WelcomePage } from '../pages/welcome/welcome';
 import { AutocompleteModalPage } from '../pages/search/search';
 import {Keyboard} from '@ionic-native/keyboard';
 import {PrettyJsonModule} from 'angular2-prettyjson';
 import {AgmCoreModule} from '@agm/core';
 import { PlacesService } from '../services/places';
 
+import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
+import { PlacesService } from '../services/places.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    WelcomePage,
     AutocompleteModalPage
   ],
   imports: [
@@ -26,12 +31,15 @@ import { PlacesService } from '../services/places';
       apiKey   : 'AIzaSyBTX1dRXW-aZt_Iw77ft8I7EfQdc-h3Sog',
       libraries: ['places']
     }),
-    PrettyJsonModule
+    PrettyJsonModule,
+    HttpModule,
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
+    WelcomePage,
     AutocompleteModalPage
   ],
   providers: [
