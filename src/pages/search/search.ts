@@ -1,17 +1,9 @@
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-<<<<<<< HEAD
-import {Component, ViewChild} from '@angular/core';
-import {ViewController} from 'ionic-angular';
-import {Keyboard} from '@ionic-native/keyboard';
-import { Places } from '../../models/places.model';
-import { PlacesService } from '../../services/places';
-=======
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { PlacesService } from '../../services/places.service';
 
->>>>>>> 992210192d4be2ebe9a66782b43e000e0a94b92a
 /**
  * Generated class for the SearchPage page.
  *
@@ -31,14 +23,10 @@ export class SearchPage {
 }
 
 
-<<<<<<< HEAD
-
-=======
 import {Component, ViewChild} from '@angular/core';
 import {ViewController} from 'ionic-angular';
 import {Keyboard} from '@ionic-native/keyboard';
 import { Places } from '../../models/places.model';
->>>>>>> 992210192d4be2ebe9a66782b43e000e0a94b92a
 
 declare var google: any;
 
