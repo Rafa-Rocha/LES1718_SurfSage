@@ -1,18 +1,23 @@
-<!--
-  Generated template for the WelcomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>welcome</ion-title>
+<ion-header no-border>
+  <ion-navbar transparent>
+    <ion-title>
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content padding class="wallpaper">
+  <div id="logo" class="wraptocenter">
+    <img src="../assets/imgs/logo.png">
+  </div>
 
-<ion-content padding>
+  <h5 class="welcomeMessage">Welcome!</h5>
+
+  <h6 class="welcomeMessage lowerSize">
+    We've noticed this is your first time using SurfSage.
+    <br><br>
+    Let's start by adding a location of your interest.
+  </h6>
+  <br>
+  <button class="buttoncenter lowerSize" ion-button (click)="openSearchPage()">Add Location</button>
 
 </ion-content>

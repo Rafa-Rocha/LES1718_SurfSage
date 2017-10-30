@@ -10,7 +10,36 @@ export class PlacesService {
   private getPlaces() {
   }
   
-  private addPlace(data: Places) {
+  addPlace(place: Places) {
+    this.storage.get('locations').then((data) => {
+      if(data == null) {
+       data = [];
+       data.push(JSON.stringify(place));
+       this.storage.set('locations',data);
+       return false;
+      
+      } else {
+        data.push(JSON.stringify(place));
+        this.storage.set('locations',data);
+        return true;
+      }
+    });
+
+    //this.storage.set(place.city + "," + place.country, JSON.stringify(place));
+  }
+
+  hasPlaces() {
+    this.storage.get('locations').then((data) => {
+      if(data == null) {
+       data = [];
+       this.storage.set('locations', data);
+       return false;
+
+      } else {
+        console.log(data);
+        return true;
+      }
+    });
   }
 
   private deletePlace(index: number) {

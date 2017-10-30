@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the WelcomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AutocompleteModalPage } from '../search/search';
 
 @IonicPage()
 @Component({
@@ -20,6 +14,10 @@ export class WelcomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
+  }
+
+  openSearchPage():void {
+    this.navCtrl.push(AutocompleteModalPage);
   }
 
 }

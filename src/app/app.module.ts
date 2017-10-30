@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { WelcomePage } from '../pages/welcome/welcome';
 import { AutocompleteModalPage } from '../pages/search/search';
 import {Keyboard} from '@ionic-native/keyboard';
 import {PrettyJsonModule} from 'angular2-prettyjson';
@@ -13,11 +14,13 @@ import {AgmCoreModule} from '@agm/core';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { PlacesService } from '../services/places.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    WelcomePage,
     AutocompleteModalPage
   ],
   imports: [
@@ -35,13 +38,15 @@ import { IonicStorageModule } from '@ionic/storage';
   entryComponents: [
     MyApp,
     HomePage,
+    WelcomePage,
     AutocompleteModalPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Keyboard,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PlacesService
   ]
 })
 export class AppModule {}

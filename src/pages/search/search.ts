@@ -2,6 +2,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { PlacesService } from '../../services/places.service';
 
 /**
  * Generated class for the SearchPage page.
@@ -46,7 +47,8 @@ export class AutocompleteModalPage {
 
   constructor(public viewCtrl: ViewController,
               private keyboard: Keyboard,
-              public http: Http) {
+              public http: Http,
+              private placesService: PlacesService) {
   }
 
   autocompleteItems: any;
@@ -103,11 +105,9 @@ export class AutocompleteModalPage {
       console.log("City: " + city + "\nCountry: " + country +
                   "\nLatitude: " + latitude + "\nLongitude: " + longitude);
       
-      //let place = new Places(city, country, latitude, longitude);
-
+      let place = new Places(city, country, latitude, longitude);
+      this.placesService.addPlace(place);
     });
-    
-    //let place = new Places();
     
     this.viewCtrl.dismiss(item);
     //console.log(item);
