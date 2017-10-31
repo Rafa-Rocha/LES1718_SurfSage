@@ -6,9 +6,18 @@
 </ion-header>
 
 <ion-content padding class="wallpaper">
-  <div id="logo" class="wraptocenter">
-    <img src="../assets/imgs/logo.png">
-  </div>
+  <ion-list>
+    
+    <ion-item-sliding>
+      <ion-item *ngFor="let location of locations">
+        {{ location.city }}
+      </ion-item>
+      <ion-item-options>
+          <button ion-button color="danger">Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
 
   <button class="buttoncenter" ion-button (click)="OpenSearchPage()">Add Location</button>
 

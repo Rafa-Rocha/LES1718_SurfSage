@@ -7,10 +7,18 @@ export class PlacesService {
 
   constructor(private storage: Storage) { }
 
-  private getPlaces() {
+  public getPlaces(locations: Array<Places>) {
+    let that = this;
+    this.storage.get('locations').then((data) => {
+        if(data !== null){
+          console.log(data);
+          let locationList = JSON.parse(data);
+          locations.push(locationList);
+        }
+    });
   }
   
-  addPlace(place: Places) {
+  public addPlace(place: Places) {
     this.storage.get('locations').then((data) => {
       if(data == null) {
        data = [];
@@ -28,7 +36,7 @@ export class PlacesService {
     //this.storage.set(place.city + "," + place.country, JSON.stringify(place));
   }
 
-  hasPlaces() {
+  public hasPlaces() {
     this.storage.get('locations').then((data) => {
       if(data == null) {
        data = [];

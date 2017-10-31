@@ -11,7 +11,6 @@ import { AutocompleteModalPage } from '../pages/search/search';
 import {Keyboard} from '@ionic-native/keyboard';
 import {PrettyJsonModule} from 'angular2-prettyjson';
 import {AgmCoreModule} from '@agm/core';
-import { PlacesService } from '../services/places';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
