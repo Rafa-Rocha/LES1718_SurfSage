@@ -14,7 +14,8 @@
     <img src="../assets/imgs/logo.png">
   </div>
 
-  <ion-searchbar #searchbar
+  <ion-searchbar id="searchbar"
+                 #searchbar
                  [(ngModel)]="autocomplete.query"
                  [showCancelButton]="true"
                  [cancelButtonText]="'Cancel'"
@@ -26,7 +27,8 @@
                  placeholder="Enter location">
   </ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let item of autocompleteItems"
+    <ion-item class="searchResult"
+              *ngFor="let item of autocompleteItems"
               (click)="chooseItem(item)">
       {{ item.description }}
     </ion-item>
