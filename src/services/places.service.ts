@@ -12,7 +12,7 @@ export class PlacesService {
     this.storage.get('locations').then((data) => {
         if(data !== null){
           //console.log(data);
-
+          locations.length = 0;
           for (let locationJson of data) {
             let location = JSON.parse(locationJson);
             locations.push(location);

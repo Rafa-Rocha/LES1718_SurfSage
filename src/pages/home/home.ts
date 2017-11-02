@@ -14,10 +14,11 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               private placesService: PlacesService) {
     this.locations = [];
-    this.placesService.getPlaces(this.locations);
+    
   }
 
   ionViewWillEnter() {
+    this.placesService.getPlaces(this.locations);
     console.log(this.locations);
   }
 
