@@ -7,13 +7,16 @@ export class PlacesService {
 
   constructor(private storage: Storage) { }
 
-  public getPlaces(locations: Array<Places>) {
+  public getPlaces(locations: Array<any>) {
     let that = this;
     this.storage.get('locations').then((data) => {
         if(data !== null){
-          console.log(data);
-          let locationList = JSON.parse(data);
-          locations.push(locationList);
+          //console.log(data);
+
+          for (let locationJson of data) {
+            let location = JSON.parse(locationJson);
+            locations.push(location);
+          }
         }
     });
   }
@@ -23,12 +26,12 @@ export class PlacesService {
       if(data == null) {
        data = [];
        data.push(JSON.stringify(place));
-       this.storage.set('locations',data);
+       this.storage.set('locations', data);
        return false;
       
       } else {
         data.push(JSON.stringify(place));
-        this.storage.set('locations',data);
+        this.storage.set('locations', data);
         return true;
       }
     });

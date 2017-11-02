@@ -9,7 +9,7 @@ import { PlacesService } from '../../services/places.service';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  locations: Array<Places>;
+  locations: Array<any>;
 
   constructor(public navCtrl: NavController,
               private placesService: PlacesService) {
@@ -18,7 +18,7 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
-    
+    console.log(this.locations);
   }
 
   OpenSearchPage(){

@@ -7,16 +7,16 @@
 
 <ion-content padding class="wallpaper">
   <ion-list>
-    
-    <ion-item-sliding>
-      <ion-item *ngFor="let location of locations">
+    <ion-item-sliding *ngFor="let location of locations">
+
+      <ion-item>
         {{ location.city }}
       </ion-item>
       <ion-item-options>
           <button ion-button color="danger">Delete</button>
       </ion-item-options>
-    </ion-item-sliding>
 
+    </ion-item-sliding>
   </ion-list>
 
   <button class="addLocation buttoncenter" ion-button (click)="OpenSearchPage()">Add Location</button>
