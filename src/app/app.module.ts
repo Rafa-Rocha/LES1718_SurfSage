@@ -32,7 +32,10 @@ import { PlacesService } from '../services/places.service';
     }),
     PrettyJsonModule,
     HttpModule,
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

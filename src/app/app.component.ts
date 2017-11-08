@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { WelcomePage } from '../pages/welcome/welcome';
 
+import { Storage } from "@ionic/storage";
 import { PlacesService } from '../services/places.service';
 
 @Component({
@@ -15,20 +16,43 @@ import { PlacesService } from '../services/places.service';
 export class MyApp {
   rootPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-              private placesService: PlacesService) {
+  constructor(private platform: Platform,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private placesService: PlacesService,
+    private storage: Storage) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      this.setRootPage();
     });
 
-    if (this.placesService.hasPlaces) {
-      this.rootPage = HomePage;
-    } else {
-      this.rootPage = WelcomePage;
-    }
+
+  }
+
+  // private seeStatus() {
+
+  //   this.placesService.hasPlaces().subscribe(response => {
+  //     if (response) {
+  //       this.rootPage = HomePage;
+  //     } else {
+  //       this.rootPage = WelcomePage;
+  //     }
+  //   });
+  // }
+
+  private setRootPage() {
+    console.log('setting root page...');
+    this.storage.get('locations').then(item => {
+      if (item) {
+        this.rootPage = HomePage
+      } else {
+        this.rootPage = WelcomePage;
+      }
+    });
+
   }
 }
 

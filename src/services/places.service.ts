@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
 import { Places } from "../models/places.model";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class PlacesService {
@@ -8,52 +9,37 @@ export class PlacesService {
   constructor(private storage: Storage) { }
 
   public getPlaces(locations: Array<any>) {
-    let that = this;
     this.storage.get('locations').then((data) => {
-        if(data !== null){
-          //console.log(data);
-          locations.length = 0;
-          for (let locationJson of data) {
-            let location = JSON.parse(locationJson);
-            locations.push(location);
-          }
+      if (data) {
+        //console.log(data);
+        for (let locationJson of data) {
+          let location = JSON.parse(locationJson);
+          locations.push(location);
         }
-    });
-  }
-  
-  public addPlace(place: Places) {
-    this.storage.get('locations').then((data) => {
-      if(data == null) {
-       data = [];
-       data.push(JSON.stringify(place));
-       this.storage.set('locations', data);
-       return false;
-      
-      } else {
-        data.push(JSON.stringify(place));
-        this.storage.set('locations', data);
-        return true;
       }
     });
-
-    //this.storage.set(place.city + "," + place.country, JSON.stringify(place));
   }
 
-  public hasPlaces() {
+  public addPlace(place: Places) {
     this.storage.get('locations').then((data) => {
-      if(data == null) {
-       data = [];
-       this.storage.set('locations', data);
-       return false;
+      data = (data) ? data : data = [];
+      data.push(JSON.stringify(place));
+      this.storage.set('locations', data);
+    });
+  }
 
+  public hasPlaces(): Observable<boolean> {
+    this.storage.get('locations').then((data) => {
+      if (data !== null) {
+        return true
       } else {
-        console.log(data);
-        return true;
+        return false;
       }
     });
   }
 
   private deletePlace(index: number) {
+    console.log(' Deleted!')
   }
 
   private removeFile(place: Places) {
