@@ -6,14 +6,29 @@
 </ion-header>
 
 <ion-content padding class="wallpaper">
+
   <ion-list>
     <ion-item-sliding *ngFor="let location of locations">
 
       <ion-item>
-        {{ location.city }}
+        <ion-row>
+          <ion-col col-8>
+            <h2>{{ location.city }}</h2>
+          </ion-col>
+          <ion-col col-2>
+            <ion-icon ios="ios-cloud" md="md-cloud" class="pull-right"></ion-icon>
+            <h2 class="pull-right">20º</h2>
+            
+          </ion-col>
+          <ion-col col-2>
+            <ion-icon ios="ios-water" md="md-water" class="pull-right"></ion-icon>
+            <h2 class="pull-right">3m</h2>
+          </ion-col>
+
+        </ion-row>
       </ion-item>
       <ion-item-options>
-          <button ion-button color="danger">Delete</button>
+        <button ion-button color="danger" (click)="deleteItem(slidingItem)" >Delete</button>
       </ion-item-options>
 
     </ion-item-sliding>

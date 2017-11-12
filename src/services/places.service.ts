@@ -29,10 +29,10 @@ export class PlacesService {
   }
 
 
-  private deletePlace(index: number) {
-    console.log(' Deleted!')
+  private deletePlace(location: string) {
+    this.storage.get('locations').then((data) => {
+      this.storage.remove(location);
+    });
   }
 
-  private removeFile(place: Places) {
-  }
 }

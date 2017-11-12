@@ -25,5 +25,9 @@ export class HomePage {
   OpenSearchPage(){
     this.navCtrl.push(AutocompleteModalPage);
   }
+  private deleteItem(item) {
+    console.log(item);
+    alert('Sou eu!');
+  }
 
 }
