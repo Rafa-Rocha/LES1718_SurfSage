@@ -27,6 +27,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ViewController} from 'ionic-angular';
 import {Keyboard} from '@ionic-native/keyboard';
 import { Places } from '../../models/places.model';
+import { weatherService } from '../../services/weatherService.service';
 
 declare var google: any;
 
@@ -50,7 +51,8 @@ export class AutocompleteModalPage {
   constructor(public viewCtrl: ViewController,
               private keyboard: Keyboard,
               public http: Http,
-              private placesService: PlacesService) {
+              private placesService: PlacesService,
+              private weatherService: weatherService) {
   }
 
   autocompleteItems: any;
@@ -109,6 +111,8 @@ export class AutocompleteModalPage {
       
       let place = new Places(city, country, latitude, longitude);
       this.placesService.addPlace(place);
+
+      console.log(this.weatherService.get());
       window.location.reload(); // Look for a better solution
       
     });

@@ -15,6 +15,7 @@ import {AgmCoreModule} from '@agm/core';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { PlacesService } from '../services/places.service';
+import { weatherService } from '../services/weatherService.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PlacesService } from '../services/places.service';
     SplashScreen,
     Keyboard,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PlacesService
+    PlacesService,
+    weatherService
   ]
 })
 export class AppModule {}
