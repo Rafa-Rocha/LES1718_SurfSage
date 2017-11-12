@@ -76,7 +76,7 @@ export class AutocompleteModalPage {
     }, 600);
   }
 
-  buildUrl(city: string, country: string) {
+  private buildUrl(city: string, country: string) {
     // replace space characters with plus symbol
     let cityUrl = city.replace(/ /g, '+');
     let countryUrl = country.replace(/ /g, '+');
@@ -86,12 +86,12 @@ export class AutocompleteModalPage {
     return this.url;
   }
 
-  getLocationCoordinates(city: string, country: string) {
+  private getLocationCoordinates(city: string, country: string) {
     this.url = this.buildUrl(city, country);
     return this.http.get(this.url).map(res => res.json());
   }
 
-  chooseItem(item: any) {
+  private chooseItem(item: any) {
     let city = item.structured_formatting.main_text;
     let country = item.structured_formatting.secondary_text;
     
@@ -109,13 +109,17 @@ export class AutocompleteModalPage {
       
       let place = new Places(city, country, latitude, longitude);
       this.placesService.addPlace(place);
+      window.location.reload(); // Look for a better solution
+      
     });
     
     this.viewCtrl.dismiss(item);
+
+    
     //console.log(item);
   }
 
-  updateSearch() {
+  private updateSearch() {
     if (this.autocomplete.query == '') {
       this.autocompleteItems = [];
       return;

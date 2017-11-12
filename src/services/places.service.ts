@@ -28,15 +28,6 @@ export class PlacesService {
     });
   }
 
-  public hasPlaces(): Observable<boolean> {
-    this.storage.get('locations').then((data) => {
-      if (data !== null) {
-        return true
-      } else {
-        return false;
-      }
-    });
-  }
 
   private deletePlace(index: number) {
     console.log(' Deleted!')
