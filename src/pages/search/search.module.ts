@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { SearchPage } from './search';
-import { PlacesService } from '../../services/places.service';
+import { StorageService } from '../../services/storageService.service';
 import { weatherService } from '../../services/weatherService.service';
+import { GoogleMapsService } from '../../services/googleMaps.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { weatherService } from '../../services/weatherService.service';
     IonicPageModule.forChild(SearchPage),
   ],
   providers: [
-    PlacesService,
+    StorageService,
+    GoogleMapsService,
     weatherService
   ]
 })

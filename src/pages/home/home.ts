@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AutocompleteModalPage } from '../search/search';
+import { SearchPage } from '../search/search';
 import { Places } from '../../models/places.model';
-import { PlacesService } from '../../services/places.service';
+import { StorageService } from '../../services/storageService.service';
 
 @Component({
   selector: 'page-home',
@@ -12,18 +12,18 @@ export class HomePage {
   locations: Array<any>;
 
   constructor(public navCtrl: NavController,
-              private placesService: PlacesService) {
+              private storageService: StorageService) {
     this.locations = [];
     
   }
 
   ionViewWillEnter() {
-    this.placesService.getPlaces(this.locations);
+    this.storageService.getPlaces(this.locations);
     console.log(this.locations);
   }
 
   OpenSearchPage(){
-    this.navCtrl.push(AutocompleteModalPage);
+    this.navCtrl.push(SearchPage);
   }
   private deleteItem(item) {
     console.log(item);

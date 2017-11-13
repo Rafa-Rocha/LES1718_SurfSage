@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AutocompleteModalPage } from '../search/search';
+import { SearchPage } from '../search/search';
 
 @IonicPage()
 @Component({
@@ -17,7 +17,7 @@ export class WelcomePage {
   }
 
   openSearchPage():void {
-    this.navCtrl.push(AutocompleteModalPage);
+    this.navCtrl.push(SearchPage);
   }
 
 }

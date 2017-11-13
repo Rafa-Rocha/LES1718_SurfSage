@@ -7,11 +7,9 @@ import { HomePage } from '../pages/home/home';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import { Storage } from "@ionic/storage";
-import { PlacesService } from '../services/places.service';
 
 @Component({
   templateUrl: 'app.html',
-  providers: [PlacesService]
 })
 export class MyApp {
   rootPage;
@@ -19,7 +17,6 @@ export class MyApp {
   constructor(private platform: Platform,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
-    private placesService: PlacesService,
     private storage: Storage) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

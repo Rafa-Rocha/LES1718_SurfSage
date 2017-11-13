@@ -7,14 +7,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { WelcomePage } from '../pages/welcome/welcome';
-import { AutocompleteModalPage } from '../pages/search/search';
+import { SearchPage } from '../pages/search/search';
 import {Keyboard} from '@ionic-native/keyboard';
 import {PrettyJsonModule} from 'angular2-prettyjson';
 import {AgmCoreModule} from '@agm/core';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
-import { PlacesService } from '../services/places.service';
+import { StorageService } from '../services/storageService.service';
+import { GoogleMapsService } from '../services/googleMaps.service';
 import { weatherService } from '../services/weatherService.service';
 
 @NgModule({
@@ -22,7 +23,7 @@ import { weatherService } from '../services/weatherService.service';
     MyApp,
     HomePage,
     WelcomePage,
-    AutocompleteModalPage
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,7 @@ import { weatherService } from '../services/weatherService.service';
     PrettyJsonModule,
     HttpModule,
     IonicStorageModule.forRoot({
-      name: '__mydb',
+      name: 'surf_sage_db',
       driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
   ],
@@ -43,14 +44,15 @@ import { weatherService } from '../services/weatherService.service';
     MyApp,
     HomePage,
     WelcomePage,
-    AutocompleteModalPage
+    SearchPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Keyboard,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PlacesService,
+    StorageService,
+    GoogleMapsService,
     weatherService
   ]
 })

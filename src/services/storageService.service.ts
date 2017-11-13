@@ -4,7 +4,7 @@ import { Places } from "../models/places.model";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
-export class PlacesService {
+export class StorageService {
 
   constructor(private storage: Storage) { }
 
@@ -20,7 +20,10 @@ export class PlacesService {
     });
   }
 
-  public addPlace(place: Places) {
+  public addPlace(city, country, latitude, longitude) {
+
+    let place = new Places(city, country, latitude, longitude);
+
     this.storage.get('locations').then((data) => {
       data = (data) ? data : data = [];
       data.push(JSON.stringify(place));
