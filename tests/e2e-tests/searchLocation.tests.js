@@ -3,7 +3,7 @@ describe('Searching for a Location ', function(){
 
     beforeEach(function() {
         browser.get('/');
-        addLocationButton = element(by.cssContainingText('.addLocation', 'Add Location'));
+        addLocationButton = element(by.css('.addLocation'));
     });
 
     it('should display the Search view, search for the inputed valid location, and show its search results', function() {
