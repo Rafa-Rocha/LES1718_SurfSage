@@ -11,18 +11,18 @@ export class StorageService {
   public getPlaces(locations: Array<any>) {
     this.storage.get('locations').then((data) => {
       if (data) {
+        locations = data;
         //console.log(data);
-        for (let locationJson of data) {
+        /*for (let locationJson of data) {
           let location = JSON.parse(locationJson);
           locations.push(location);
-        }
+        }*/
       }
     });
   }
 
-  public addPlace(city, country, latitude, longitude) {
-
-    let place = new Places(city, country, latitude, longitude);
+  public addPlace(place) {
+    //let place = new Places(city, country, latitude, longitude);
 
     this.storage.get('locations').then((data) => {
       data = (data) ? data : data = [];
@@ -31,11 +31,37 @@ export class StorageService {
     });
   }
 
+  public deletePlace(locationToDelete) {
+    let locationsArray = [];
+    this.getPlaces(locationsArray);
 
-  private deletePlace(location: string) {
-    this.storage.get('locations').then((data) => {
-      this.storage.remove(location);
+    let index = this.deepIndexOf(locationsArray, locationToDelete);
+    
+    if(index > -1){
+        locationsArray.splice(index, 1);
+    }
+
+    let locationsJson = [];
+    for ( let location in locationsArray) {
+        locationsJson.push(JSON.stringify(location));
+    }
+
+    this.storage.set('locations', locationsJson);
+  }
+
+  private deepIndexOf(arr, obj) {
+    return arr.findIndex(function (cur) {
+      return Object.keys(obj).every(function (key) {
+        return obj[key] === cur[key];
+      });
     });
   }
 
+  public saveLocations(data) {
+    this.storage.set('locations', data);
+  }
+
+  public getLocations() {
+    return this.storage.get('locations');
+  }
 }

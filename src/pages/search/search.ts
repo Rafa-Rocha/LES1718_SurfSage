@@ -72,17 +72,10 @@ export class SearchPage {
       console.log("City: " + city + "\nCountry: " + country +
                   "\nLatitude: " + latitude + "\nLongitude: " + longitude);
       
-      this.storageService.addPlace(city, country, latitude, longitude);
-
+      let place = new Places(city, country, latitude, longitude);
       console.log(this.weatherService.get());
-      window.location.reload(); // Look for a better solution
-      
+      this.viewCtrl.dismiss(place);
     });
-    
-    this.viewCtrl.dismiss(item);
-
-    
-    //console.log(item);
   }
 
   private updateSearch() {
