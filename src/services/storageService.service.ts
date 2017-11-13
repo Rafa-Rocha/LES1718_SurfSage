@@ -58,7 +58,7 @@ export class StorageService {
   }
 
   public saveLocations(data) {
-    this.storage.set('locations', data);
+    this.storage.set('locations', JSON.stringify(data));
   }
 
   public getLocations() {

@@ -17,7 +17,7 @@ export class HomePage {
 
     this.storageService.getLocations().then((data) => {
       if (data) {
-        this.locations = data;
+        this.locations = JSON.parse(data);
       }
     });
 
@@ -41,9 +41,15 @@ export class HomePage {
     //this.navCtrl.push(SearchPage);
   }
 
-  private saveItem(location) {
-    this.locations.push(location);
-    this.storageService.saveLocations(this.locations);
+  private saveItem(locationToSave) {
+    // check if location already exists in the list
+    let index = this.deepIndexOf(this.locations, locationToSave);
+    
+    // if it doesn't exist, then save the location
+    if (index === -1) {
+      this.locations.push(locationToSave);
+      this.storageService.saveLocations(this.locations);
+    }
   }
 
   private deleteItem(locationToDelete) {

@@ -45,10 +45,6 @@ export class SearchPage {
     };
   }
 
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
-
   ionViewDidLoad() {
     setTimeout(() => {
       this.searchBar.setFocus();
