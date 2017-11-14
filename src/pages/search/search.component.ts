@@ -14,7 +14,6 @@ import { weatherService } from '../../services/weatherService.service';
 declare var google: any;
 
 
-@IonicPage()
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',
