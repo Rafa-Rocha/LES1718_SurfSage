@@ -18,8 +18,7 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     private storageService: StorageService,
     private weatherProvider:WeatherProvider,
-    public modalCtrl: ModalController,
-    public places: Places
+    public modalCtrl: ModalController
   ) {
 
     this.storageService.getLocations().then((data) => {
@@ -76,15 +75,17 @@ export class HomePage {
     });
   }
   weather:any;
-  
+ 
   ionViewWillEnter(){
     
-       
     
-          this.weatherProvider.getWeather(this.places.getLng,this.places.getLng).subscribe(
+    for ( let location in this.locations) {
+    
+          this.weatherProvider.getWeather(41.1622023,8.6569733).subscribe(
             weather =>{
-              //console.log(JSON.stringify(weather));
+              //console.log(JSON.stringify(weather.current_observation));
               this.weather = weather.current_observation;
+              this.currentTemp.push(JSON.stringify(weather.current_observation));
             }
           );
     
@@ -92,4 +93,5 @@ export class HomePage {
       }
 
 
+}
 }

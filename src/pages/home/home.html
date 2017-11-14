@@ -8,7 +8,7 @@
    
 
 <ion-content padding class="wallpaper">
-  <ion-grid *ngIf="weather">
+
     
     
   <ion-list>
@@ -23,7 +23,7 @@
           <ion-col col-2>
             <ion-icon ios="ios-cloud" md="md-cloud" class="pull-right"></ion-icon>
             
-            <strong>Temp: </strong> {{weather.temp_c}}<h2 class="pull-right">Cº</h2>
+    
            
           </ion-col>
           <ion-col col-2>
@@ -41,5 +41,5 @@
   </ion-list>
 
   <ion-icon class="addLocation buttoncenter large" ios="ios-add-circle" md="md-add-circle" (click)="openSearchPage()"></ion-icon>
-</ion-grid>
+
 </ion-content>

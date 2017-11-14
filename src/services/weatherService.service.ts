@@ -20,9 +20,13 @@ export class WeatherProvider {
   }
    
   //Following function takes city and state as an input
+ 
   getWeather(Long,Lat) {
-    return this.http.get(this.url+'/'+Long+','+Lat+'.json')
-           .map(result => result.json());
-  }
 
+  
+     
+    return this.http.get(this.url+'/'+Long+','+Lat+'.json')
+           .map(result => { return result.json() });
+  
+  }
 }

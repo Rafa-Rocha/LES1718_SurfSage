@@ -9,8 +9,11 @@ import {Component, ViewChild} from '@angular/core';
 import {ViewController} from 'ionic-angular';
 import {Keyboard} from '@ionic-native/keyboard';
 import { Places } from '../../models/places.model';
+import { WeatherProvider } from "../../services/weatherService.service";
 
 declare var google: any;
+declare var v1: any;
+
 
 
 @IonicPage()
@@ -19,16 +22,21 @@ declare var google: any;
   templateUrl: 'search.html',
 })
 export class SearchPage {
+  weather:any;
+  v2: any;
 
   @ViewChild('searchbar') searchBar;
 
   private place: Places[] = [];
+
+
   
   constructor(public viewCtrl: ViewController,
               private keyboard: Keyboard,
               public http: Http,
               private storageService: StorageService,
-              private googleMapsService : GoogleMapsService
+              private googleMapsService : GoogleMapsService,
+              public wheatherProvider : WeatherProvider
           ) {
   }
 
@@ -51,7 +59,8 @@ export class SearchPage {
     }, 600);
   }
 
-  private chooseItem(item: any) {
+  
+ public chooseItem(item: any) {
     let city = item.structured_formatting.main_text;
     let country = item.structured_formatting.secondary_text;
     
@@ -64,10 +73,30 @@ export class SearchPage {
       let latitude = result.lat;
       let longitude = result.lng;
 
-      console.log("City: " + city + "\nCountry: " + country +
-                  "\nLatitude: " + latitude + "\nLongitude: " + longitude);
+
+
       
-      let place = new Places(city, country, latitude, longitude);
+      this.wheatherProvider.getWeather(latitude,longitude).subscribe(
+        weather =>{
+         this.weather = weather.current_observation.temp_c
+         console.log('Temperatura atual deste local:'+this.weather);
+         
+        }
+       
+      );
+
+
+      
+
+             
+                
+            
+                  
+               
+                  
+
+                  
+                  let place = new Places(city, country, latitude, longitude, 'Temperatura');
      
       this.viewCtrl.dismiss(place);
     });

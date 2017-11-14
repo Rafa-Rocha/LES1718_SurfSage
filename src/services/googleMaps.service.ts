@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
-import { Places } from "../models/places.model";
+
 import { Observable } from "rxjs/Observable";
 import { Http } from '@angular/http';
 
