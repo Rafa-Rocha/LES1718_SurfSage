@@ -5,9 +5,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="wallpaper">
+   
 
+<ion-content padding class="wallpaper">
+  <ion-grid *ngIf="weather">
+    
+    
   <ion-list>
+     
     <ion-item-sliding *ngFor="let location of locations">
 
       <ion-item class="location">
@@ -17,8 +22,9 @@
           </ion-col>
           <ion-col col-2>
             <ion-icon ios="ios-cloud" md="md-cloud" class="pull-right"></ion-icon>
-            <h2 class="pull-right">20º</h2>
             
+            <strong>Temp: </strong> {{weather.temp_c}}<h2 class="pull-right">Cº</h2>
+           
           </ion-col>
           <ion-col col-2>
             <ion-icon ios="ios-water" md="md-water" class="pull-right"></ion-icon>
@@ -35,4 +41,5 @@
   </ion-list>
 
   <ion-icon class="addLocation buttoncenter large" ios="ios-add-circle" md="md-add-circle" (click)="openSearchPage()"></ion-icon>
+</ion-grid>
 </ion-content>

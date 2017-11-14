@@ -3,17 +3,24 @@ import { NavController, ModalController } from 'ionic-angular';
 import { SearchPage } from '../search/search';
 import { Places } from '../../models/places.model';
 import { StorageService } from '../../services/storageService.service';
+import { WeatherProvider } from '../../services/weatherService.service';
+import { Storage } from  '@ionic/storage'
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+
   public locations = [];
+  public currentTemp = [];
 
   constructor(public navCtrl: NavController,
     private storageService: StorageService,
-    public modalCtrl: ModalController) {
+    private weatherProvider:WeatherProvider,
+    public modalCtrl: ModalController,
+    public places: Places
+  ) {
 
     this.storageService.getLocations().then((data) => {
       if (data) {
@@ -24,8 +31,7 @@ export class HomePage {
     //this.storageService.getPlaces(this.locations);
   }
 
-  ionViewWillEnter() {
-  }
+ 
 
   openSearchPage() {
 
@@ -69,5 +75,21 @@ export class HomePage {
       });
     });
   }
+  weather:any;
+  
+  ionViewWillEnter(){
+    
+       
+    
+          this.weatherProvider.getWeather(this.places.getLng,this.places.getLng).subscribe(
+            weather =>{
+              //console.log(JSON.stringify(weather));
+              this.weather = weather.current_observation;
+            }
+          );
+    
+    
+      }
+
 
 }

@@ -11,4 +11,14 @@ export class Places {
         this.lat = lat;
         this.lng = lng;
     }
+
+    public getLat() {
+        
+        return this.lat;
+      }
+    
+      public getLng() {
+        return this.lng;
+      }
+
 }

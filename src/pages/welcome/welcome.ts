@@ -3,6 +3,7 @@ import { IonicPage, NavController, ModalController, NavParams } from 'ionic-angu
 import { SearchPage } from '../search/search';
 import { HomePage } from '../home/home';
 import { StorageService } from '../../services/storageService.service';
+import { Places } from '../../models/places.model';
 
 @IonicPage()
 @Component({

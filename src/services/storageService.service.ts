@@ -64,4 +64,6 @@ export class StorageService {
   public getLocations() {
     return this.storage.get('locations');
   }
+
+
 }

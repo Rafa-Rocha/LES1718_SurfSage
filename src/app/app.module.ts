@@ -11,12 +11,13 @@ import { SearchPage } from '../pages/search/search';
 import {Keyboard} from '@ionic-native/keyboard';
 import {PrettyJsonModule} from 'angular2-prettyjson';
 import {AgmCoreModule} from '@agm/core';
-
+import { Places } from '../models/places.model';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { StorageService } from '../services/storageService.service';
 import { GoogleMapsService } from '../services/googleMaps.service';
-import { weatherService } from '../services/weatherService.service';
+
+import { WeatherProvider } from '../services/weatherService.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { weatherService } from '../services/weatherService.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StorageService,
     GoogleMapsService,
-    weatherService
+    WeatherProvider
   ]
 })
 export class AppModule {}

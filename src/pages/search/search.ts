@@ -9,7 +9,6 @@ import {Component, ViewChild} from '@angular/core';
 import {ViewController} from 'ionic-angular';
 import {Keyboard} from '@ionic-native/keyboard';
 import { Places } from '../../models/places.model';
-import { weatherService } from '../../services/weatherService.service';
 
 declare var google: any;
 
@@ -29,8 +28,8 @@ export class SearchPage {
               private keyboard: Keyboard,
               public http: Http,
               private storageService: StorageService,
-              private googleMapsService : GoogleMapsService,
-              private weatherService: weatherService) {
+              private googleMapsService : GoogleMapsService
+          ) {
   }
 
   autocompleteItems: any;
@@ -69,7 +68,7 @@ export class SearchPage {
                   "\nLatitude: " + latitude + "\nLongitude: " + longitude);
       
       let place = new Places(city, country, latitude, longitude);
-      console.log(this.weatherService.get());
+     
       this.viewCtrl.dismiss(place);
     });
   }
