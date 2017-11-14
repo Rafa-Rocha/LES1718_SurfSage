@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AutocompleteModalPage } from '../search/search';
+import { AutocompleteModalPage } from '../search/search.component';
 import { Places } from '../../models/places.model';
 import { PlacesService } from '../../services/places.service';
 

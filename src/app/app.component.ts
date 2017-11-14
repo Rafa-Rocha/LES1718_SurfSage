@@ -3,8 +3,8 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { WelcomePage } from '../pages/welcome/welcome';
+import { HomePage } from '../pages/home/home.component';
+import { WelcomePage } from '../pages/welcome/welcome.component';
 
 import { PlacesService } from '../services/places.service';
 

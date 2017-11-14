@@ -10,7 +10,6 @@ import { PlacesService } from '../../services/places.service';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 export class SearchPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -31,7 +30,6 @@ import { Places } from '../../models/places.model';
 declare var google: any;
 
 
-@IonicPage()
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',
