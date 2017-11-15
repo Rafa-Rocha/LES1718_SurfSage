@@ -12,9 +12,9 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, RequestMethod, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { Router } from '@angular/router'
+// import { Router } from '@angular/router'
 
-import { UtilityService } from './utility.service';
+// import { UtilityService } from './utility.service';
 import { DataServiceOptions } from './data-service-options';
 
 import 'rxjs/add/operator/map';
@@ -31,7 +31,7 @@ export class DataService {
   // Provide the *public* Observable that clients can subscribe to
   public pendingCommands$: Observable<number>;
 
-  constructor(public http: Http, public us: UtilityService, private router?: Router) {
+  constructor(public http: Http, ) { // public us: UtilityService,  private router?: Router
     this.pendingCommands$ = this.pendingCommandsSubject.asObservable();
   }
 
@@ -108,7 +108,7 @@ export class DataService {
 
     const stream = this.http.request(options.url, requestOptions)
       .catch((error: any) => {
-        this.handleErrors(error);
+        // this.handleErrors(error);
         return Observable.throw(error);
       })
       .map(this.unwrapHttpValue)
@@ -162,7 +162,7 @@ export class DataService {
   }
 
   private addCors(options: DataServiceOptions): DataServiceOptions {
-    options.headers['Access-Control-Allow-Origin'] = '*';
+    // options.headers['Access-Control-Allow-Origin'] = '*'; // Disabling Cors
     return options;
   }
 
@@ -216,20 +216,20 @@ export class DataService {
   private unwrapHttpValue(value: Response): any {
     return (value.json());
   }
-  private handleErrors(error: any) {
-    if (error.status === 401) {
-      sessionStorage.clear();
-      this.us.navigateToSignIn();
-    } else if (error.status === 403) {
-      // Forbidden
-      this.us.navigateToSignIn();
-    }
-  }
+  // private handleErrors(error: any) {
+  //   if (error.status === 401) {
+  //     sessionStorage.clear();
+  //     this.us.navigateToSignIn();
+  //   } else if (error.status === 403) {
+  //     // Forbidden
+  //     this.us.navigateToSignIn();
+  //   }
+  // }
 
-  public getBaseUrl(): string {
-    const routeUrl = this.router.url;
-    const totalUrl = window.location.href;
-    const hostUrl = totalUrl.replace(routeUrl, '') + '/api/';
-    return hostUrl;
-  }
+  // public getBaseUrl(): string {
+  //   const routeUrl = this.router.url;
+  //   const totalUrl = window.location.href;
+  //   const hostUrl = totalUrl.replace(routeUrl, '') + '/api/';
+  //   return hostUrl;
+  // }
 }
