@@ -7,7 +7,7 @@
 
 <ion-content padding class="wallpaper">
 
-  <ion-list>
+  <ion-list id="item-list">
     <ion-item-sliding *ngFor="let location of locations">
 
       <ion-item class="location">
@@ -28,7 +28,7 @@
         </ion-row>
       </ion-item>
       <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(location)">Delete</button>
+        <button id="delete-button" class="delete" ion-button color="danger" (click)="deleteItem(location)">Delete</button>
       </ion-item-options>
 
     </ion-item-sliding>

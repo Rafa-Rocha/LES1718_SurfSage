@@ -41,7 +41,7 @@ export class HomePage {
     //this.navCtrl.push(SearchPage);
   }
 
-  private saveItem(locationToSave) {
+  public saveItem(locationToSave) {
     // check if location already exists in the list
     let index = this.deepIndexOf(this.locations, locationToSave);
     
@@ -52,7 +52,7 @@ export class HomePage {
     }
   }
 
-  private deleteItem(locationToDelete) {
+  public deleteItem(locationToDelete) {
     let index = this.deepIndexOf(this.locations, locationToDelete);
 
     if (index > -1) {
