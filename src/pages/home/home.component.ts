@@ -3,23 +3,31 @@ import { NavController, ModalController } from 'ionic-angular';
 import { SearchPage } from '../search/search.component';
 import { Places } from '../../models/places.model';
 import { StorageService } from '../../services/storageService.service';
+import { WUndergroundService } from '../../services/wUnderground.service';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [WUndergroundService]
 })
 export class HomePage {
-  public locations = [];
+  public locations: Places[] = [];
 
   constructor(public navCtrl: NavController,
     private storageService: StorageService,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+    private wUndergroundService: WUndergroundService) {
 
     this.storageService.getLocations().then((data) => {
       if (data) {
         this.locations = JSON.parse(data);
+        this.locations.forEach(element => {
+          this.addingWeatherData(element);
+         console.log(element);
+        });
       }
     });
+
 
     //this.storageService.getPlaces(this.locations);
   }
@@ -34,6 +42,10 @@ export class HomePage {
     addModal.onDidDismiss((location) => {
       if (location) {
         this.saveItem(location);
+        this.locations.forEach(element => {
+          this.addingWeatherData(element);
+         console.log(element);
+        });
       }
     });
 
@@ -44,7 +56,7 @@ export class HomePage {
   private saveItem(locationToSave) {
     // check if location already exists in the list
     let index = this.deepIndexOf(this.locations, locationToSave);
-    
+
     // if it doesn't exist, then save the location
     if (index === -1) {
       this.locations.push(locationToSave);
@@ -70,4 +82,14 @@ export class HomePage {
     });
   }
 
+  private addingWeatherData(location: Places) {
+    this.wUndergroundService.getWeatherStatus(location.lat, location.lng).subscribe(
+      (response: any) => {
+        console.log(response);
+        location.weather.temperature = response.current_observation.temp_c;
+        /*console.log(this.locations[0]);
+        console.log(this.locations[0].weather);*/
+      }
+    );
+  }
 }

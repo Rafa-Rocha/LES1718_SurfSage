@@ -17,6 +17,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StorageService } from '../services/storageService.service';
 import { GoogleMapsService } from '../services/googleMaps.service';
 import { weatherService } from '../services/weatherService.service';
+import { WUndergroundService } from '../services/wUnderground.service';
+import { DataService } from '../core/services/data.service';
+// import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { weatherService } from '../services/weatherService.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StorageService,
     GoogleMapsService,
-    weatherService
+    weatherService,
+    WUndergroundService,
+    DataService,
+    // Router
   ]
 })
 export class AppModule {}
