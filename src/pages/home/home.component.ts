@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-import { SearchPage } from '../search/search';
+import { SearchPage } from '../search/search.component';
 import { Places } from '../../models/places.model';
 import { StorageService } from '../../services/storageService.service';
 

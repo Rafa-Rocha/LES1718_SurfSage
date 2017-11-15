@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SearchPage } from './search';
+import { SearchPage } from './search.component';
 import { StorageService } from '../../services/storageService.service';
 import { weatherService } from '../../services/weatherService.service';
 import { GoogleMapsService } from '../../services/googleMaps.service';
