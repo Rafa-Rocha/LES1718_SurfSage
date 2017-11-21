@@ -5,15 +5,16 @@ export class Weather {
     public location?: string
     public temperature?: string;
     public weatherIconURL?: string;
-    public tidesHeight?: string;
+    public tidalHeights?: any[];
+    public currentTidalHeight?: any;
 
     constructor(id?: number, location?: string, temperature?: string, weatherIconURL?: string,
-                 tidesHeight?: string) {
+                tidalHeights?: any[]) {
         
         this.id = id;
         this.location = location;
         this.temperature = temperature;
         this.weatherIconURL = weatherIconURL;
-        this.tidesHeight = tidesHeight;
+        this.tidalHeights = tidalHeights;
     }
 }

@@ -27,8 +27,12 @@
           </ion-col>
 
           <ion-col col-3>
-            <ion-icon ios="ios-water" md="md-water" class="pull-right"></ion-icon>
-            <h2 class="pull-right">3m</h2>
+            <div>
+              <ion-icon class="center">
+                <img src="../assets/imgs/wave_icon.png" class="center">
+              </ion-icon>
+              <h2 class="pull-right">{{ location.weather.currentTidalHeight }} m</h2>
+            </div>
           </ion-col>
         </ion-row>
       </ion-item>
