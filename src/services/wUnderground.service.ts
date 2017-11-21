@@ -8,8 +8,9 @@ import { DataService } from "../core/services/data.service";
 @Injectable()
 export class WUndergroundService {
 
-  // for Google Geocoding API
+  // for WeatherUnderground API
   private apiKey = 'e01eb6c0c23f1ac5';
+  private backupApiKey = '63f21773ef8cd16c';
   // private baseUrl = 'http://api.wunderground.com/api/{app}/tide/geolookup/q/';
   private url;
 

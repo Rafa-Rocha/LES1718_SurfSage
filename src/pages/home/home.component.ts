@@ -87,6 +87,7 @@ export class HomePage {
       (response: any) => {
         console.log(response);
         location.weather.temperature = response.current_observation.temp_c;
+        location.weather.weatherIconURL = response.current_observation.icon_url;
         /*console.log(this.locations[0]);
         console.log(this.locations[0].weather);*/
       }

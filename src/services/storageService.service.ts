@@ -7,20 +7,20 @@ import { Observable } from "rxjs/Observable";
 export class StorageService {
 
   constructor(private storage: Storage) { }
-
+  /*
   public getPlaces(locations: Array<any>) {
     this.storage.get('locations').then((data) => {
       if (data) {
         locations = data;
         //console.log(data);
-        /*for (let locationJson of data) {
-          let location = JSON.parse(locationJson);
-          locations.push(location);
-        }*/
+        //for (let locationJson of data) {
+        //  let location = JSON.parse(locationJson);
+        //  locations.push(location);
+        //}
       }
     });
-  }
-
+  }*/
+  /*
   public addPlace(place) {
     //let place = new Places(city, country, latitude, longitude);
 
@@ -30,7 +30,8 @@ export class StorageService {
       this.storage.set('locations', data);
     });
   }
-
+  */
+  /*
   public deletePlace(locationToDelete) {
     let locationsArray = [];
     this.getPlaces(locationsArray);
@@ -48,7 +49,7 @@ export class StorageService {
 
     this.storage.set('locations', locationsJson);
   }
-
+  */
   private deepIndexOf(arr, obj) {
     return arr.findIndex(function (cur) {
       return Object.keys(obj).every(function (key) {
