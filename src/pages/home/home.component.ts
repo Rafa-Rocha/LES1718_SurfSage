@@ -118,7 +118,7 @@ export class HomePage {
     for (let tidalHeight in location.weather.tidalHeights) {
       let tideTime = location.weather.tidalHeights[tidalHeight].dt;
       if (currentTime < tideTime) {
-        location.weather.currentTidalHeight = location.weather.tidalHeights[tidalHeight].height;
+        location.weather.currentTidalHeight = Math.round(location.weather.tidalHeights[tidalHeight].height * 10) / 10;
         break;
       }
     }
