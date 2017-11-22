@@ -66,3 +66,13 @@
   font-size: 30px;
 }
 
+.pull-right {
+  float: right;
+  &::after {
+      clear: both;
+      content: '';
+  }
+}
+
+
+
