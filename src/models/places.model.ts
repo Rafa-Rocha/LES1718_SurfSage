@@ -7,14 +7,12 @@ export class Places {
     public lng: string;
     public lat: string;
     public weather: Weather;
-    public temp: number;
 
-    constructor(city: string, country: string, lat: string, lng: string, temp?: number, weather?: Weather) {
+    constructor(city: string, country: string, lat: string, lng: string, weather?: Weather) {
         this.city = city;
         this.country = country;
         this.lat = lat;
         this.lng = lng;
-        this.temp = temp;
         this.weather = new Weather();
     }
 }
