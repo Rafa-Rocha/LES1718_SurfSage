@@ -123,4 +123,9 @@ export class HomePage {
       }
     }
   }
+
+  private itemSelected(location) {
+    //console.log(location);
+    this.navCtrl.push('LocationStatisticsPage', {location: location});
+  }
 }

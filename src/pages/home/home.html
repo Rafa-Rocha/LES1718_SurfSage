@@ -10,7 +10,7 @@
   <ion-list id="item-list">
     <ion-item-sliding *ngFor="let location of locations">
 
-      <ion-item class="location">
+      <button ion-item class="location" (click)="itemSelected(location)">
         <ion-row>
           <ion-col col-5>
             <h2 class="centerLocationName">{{ location.city }}</h2>
@@ -35,7 +35,7 @@
             </div>
           </ion-col>
         </ion-row>
-      </ion-item>
+      </button>
       <ion-item-options>
         <button id="delete-button" class="delete" ion-button color="danger" (click)="deleteItem(location)">Delete</button>
       </ion-item-options>
