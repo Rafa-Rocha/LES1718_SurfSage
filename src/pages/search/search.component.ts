@@ -51,6 +51,10 @@ export class SearchPage {
     }, 600);
   }
 
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
   private chooseItem(item: any) {
     let city = item.structured_formatting.main_text;
     let country = item.structured_formatting.secondary_text;

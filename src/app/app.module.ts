@@ -18,6 +18,7 @@ import { StorageService } from '../services/storageService.service';
 import { GoogleMapsService } from '../services/googleMaps.service';
 import { weatherService } from '../services/weatherService.service';
 import { WUndergroundService } from '../services/wUnderground.service';
+import { WorldTidesService } from '../services/worldTides.service';
 import { DataService } from '../core/services/data.service';
 // import { Router } from '@angular/router';
 
@@ -58,6 +59,7 @@ import { DataService } from '../core/services/data.service';
     GoogleMapsService,
     weatherService,
     WUndergroundService,
+    WorldTidesService,
     DataService,
     // Router
   ]

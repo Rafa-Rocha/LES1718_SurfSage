@@ -7,28 +7,37 @@
 
 <ion-content padding class="wallpaper">
 
-  <ion-list>
+  <ion-list id="item-list">
     <ion-item-sliding *ngFor="let location of locations">
 
       <ion-item class="location">
         <ion-row>
-          <ion-col col-8>
-            <h2>{{ location.city }}</h2>
+          <ion-col col-5>
+            <h2 class="centerLocationName">{{ location.city }}</h2>
           </ion-col>
-          <ion-col col-2>
-            <ion-icon ios="ios-cloud" md="md-cloud" class="pull-right"></ion-icon>
-            <h2 class="pull-right">{{ location.weather.temperature }}</h2>
-            
-          </ion-col>
-          <ion-col col-2>
-            <ion-icon ios="ios-water" md="md-water" class="pull-right"></ion-icon>
-            <h2 class="pull-right">3m</h2>
+          
+          <ion-col col-3>
+            <!--<ion-icon ios="ios-cloud" md="md-cloud" class="pull-right"></ion-icon>-->
+            <div>
+              <ion-icon class="center">
+                <img src="{{ location.weather.weatherIconURL }}" class="center">
+              </ion-icon>
+              <h2 class="center">{{ location.weather.temperature }}º</h2>
+            </div>
           </ion-col>
 
+          <ion-col col-3>
+            <div>
+              <ion-icon class="center">
+                <img src="../assets/imgs/wave_icon.png" class="center">
+              </ion-icon>
+              <h2 class="center">{{ location.weather.currentTidalHeight }} m</h2>
+            </div>
+          </ion-col>
         </ion-row>
       </ion-item>
       <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(location)">Delete</button>
+        <button id="delete-button" class="delete" ion-button color="danger" (click)="deleteItem(location)">Delete</button>
       </ion-item-options>
 
     </ion-item-sliding>

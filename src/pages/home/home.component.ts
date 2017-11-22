@@ -4,11 +4,12 @@ import { SearchPage } from '../search/search.component';
 import { Places } from '../../models/places.model';
 import { StorageService } from '../../services/storageService.service';
 import { WUndergroundService } from '../../services/wUnderground.service';
+import { WorldTidesService } from '../../services/worldTides.service';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [WUndergroundService]
+  providers: [WUndergroundService, WorldTidesService]
 })
 export class HomePage {
   public locations: Places[] = [];
@@ -16,14 +17,16 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     private storageService: StorageService,
     public modalCtrl: ModalController,
-    private wUndergroundService: WUndergroundService) {
+    private wUndergroundService: WUndergroundService,
+    private worldTidesService: WorldTidesService) {
 
     this.storageService.getLocations().then((data) => {
       if (data) {
         this.locations = JSON.parse(data);
         this.locations.forEach(element => {
           this.addingWeatherData(element);
-         console.log(element);
+          this.addingTidalData(element);
+          //console.log(element);
         });
       }
     });
@@ -44,6 +47,7 @@ export class HomePage {
         this.saveItem(location);
         this.locations.forEach(element => {
           this.addingWeatherData(element);
+          this.addingTidalData(element);
          console.log(element);
         });
       }
@@ -53,7 +57,7 @@ export class HomePage {
     //this.navCtrl.push(SearchPage);
   }
 
-  private saveItem(locationToSave) {
+  public saveItem(locationToSave) {
     // check if location already exists in the list
     let index = this.deepIndexOf(this.locations, locationToSave);
 
@@ -64,7 +68,7 @@ export class HomePage {
     }
   }
 
-  private deleteItem(locationToDelete) {
+  public deleteItem(locationToDelete) {
     let index = this.deepIndexOf(this.locations, locationToDelete);
 
     if (index > -1) {
@@ -87,9 +91,36 @@ export class HomePage {
       (response: any) => {
         console.log(response);
         location.weather.temperature = response.current_observation.temp_c;
+        location.weather.weatherIconURL = response.current_observation.icon_url;
         /*console.log(this.locations[0]);
         console.log(this.locations[0].weather);*/
       }
     );
+  }
+
+  private addingTidalData(location: Places) {
+    this.worldTidesService.getTidalStatus(location.lat, location.lng).subscribe(
+      (response: any) => {
+        //console.log(response);
+        location.weather.tidalHeights = response.heights;
+        console.log(location.weather.tidalHeights);
+        
+        this.setCurrentTidalHeight(location);
+        //location.weather.weatherIconURL = response.current_observation.icon_url;
+        /*console.log(this.locations[0]);
+        console.log(this.locations[0].weather);*/
+      }
+    );
+  }
+
+  private setCurrentTidalHeight(location: Places) {
+    var currentTime = Math.floor((new Date).getTime()/1000);
+    for (let tidalHeight in location.weather.tidalHeights) {
+      let tideTime = location.weather.tidalHeights[tidalHeight].dt;
+      if (currentTime < tideTime) {
+        location.weather.currentTidalHeight = Math.round(location.weather.tidalHeights[tidalHeight].height * 10) / 10;
+        break;
+      }
+    }
   }
 }
