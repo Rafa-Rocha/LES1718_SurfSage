@@ -92,8 +92,6 @@ export class HomePage {
         console.log(response);
         location.weather.temperature = response.current_observation.temp_c;
         location.weather.weatherIconURL = response.current_observation.icon_url;
-        /*console.log(this.locations[0]);
-        console.log(this.locations[0].weather);*/
       }
     );
   }
@@ -101,31 +99,27 @@ export class HomePage {
   private addingTidalData(location: Places) {
     this.worldTidesService.getTidalStatus(location.lat, location.lng).subscribe(
       (response: any) => {
-        //console.log(response);
         location.weather.tidalHeights = response.heights;
         console.log(location.weather.tidalHeights);
-        
         this.setCurrentTidalHeight(location);
-        //location.weather.weatherIconURL = response.current_observation.icon_url;
-        /*console.log(this.locations[0]);
-        console.log(this.locations[0].weather);*/
       }
     );
   }
 
   private setCurrentTidalHeight(location: Places) {
     var currentTime = Math.floor((new Date).getTime()/1000);
+    
     for (let tidalHeight in location.weather.tidalHeights) {
       let tideTime = location.weather.tidalHeights[tidalHeight].dt;
       if (currentTime < tideTime) {
-        location.weather.currentTidalHeight = Math.round(location.weather.tidalHeights[tidalHeight].height * 10) / 10;
+        location.weather.currentTidalHeight = 
+          Math.round(location.weather.tidalHeights[tidalHeight].height * 10) / 10;
         break;
       }
     }
   }
 
   private itemSelected(location) {
-    //console.log(location);
     this.navCtrl.push('LocationStatisticsPage', {location: location});
   }
 }

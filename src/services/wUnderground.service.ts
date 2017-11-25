@@ -9,22 +9,30 @@ import { DataService } from "../core/services/data.service";
 export class WUndergroundService {
 
   // for WeatherUnderground API
+  private baseUrl = 'http://api.wunderground.com/api/';
   private apiKey = 'e01eb6c0c23f1ac5';
   private backupApiKey = '63f21773ef8cd16c';
-  // private baseUrl = 'http://api.wunderground.com/api/{app}/tide/geolookup/q/';
-  private url;
 
   constructor(private storage: Storage, private dataService: DataService) { }
 
-  private buildUrl(lat: string, lng: string,) {
+  private buildUrlForCurrentWeather(lat: string, lng: string,) {
+    let url = this.baseUrl + this.apiKey + '/conditions/q/' + lat + ',' + lng + '.json';
+    return url;
+  }
 
-    this.url = 'http://api.wunderground.com/api/' + this.apiKey + '/conditions/q/' + lat + ',' + lng + '.json';
-    return this.url;
+  private buildUrlForWeatherForecast(lat: string, lng: string,) {
+    let url = this.baseUrl + this.apiKey + '/forecast/q/' + lat + ',' + lng + '.json';
+    return url;
   }
 
   public getWeatherStatus(lat: string, lng: string) {
-    this.url = this.buildUrl(lat, lng);
-    return this.dataService.get(this.url);
+    let url = this.buildUrlForCurrentWeather(lat, lng);
+    return this.dataService.get(url);
+  }
+
+  public getWeatherForecast(lat: string, lng: string) {
+    let url = this.buildUrlForWeatherForecast(lat, lng);
+    return this.dataService.get(url);
   }
 
 }
