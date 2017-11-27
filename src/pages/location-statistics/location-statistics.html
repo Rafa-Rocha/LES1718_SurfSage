@@ -14,55 +14,87 @@
 
 
 <ion-content no-bounce>
-  <div class="full-screen">
+  <div class="full-screen wallpaper">
 
     <!--Detail Segment-->
-
+    <!-- Como Faço par isso ficar transparente ? -->
     <ion-list class="full-screen">
-      <ion-item class="center half-screen" text-wrap>
-        <div class="bold large">Porto</div>
-        <div class="small">Today</div>
-        <ion-grid>
-          <ion-row>
-            <ion-col col-4 class="center-child">
-              <div>
-                <span class="x-large" ion-text color="text1">
-                  10º
-                </span>
-                <span class="large" ion-text color="text1">
-                  10º
-                </span>
-                <div class="x-small" ion-text color="text1">RealFeel</div>
-                <span class="large" ion-text color="text2">
-                  10º
-                </span>
-                <span class="medium" ion-text color="text2">
-                  10º
-                </span>
-              </div>
-            </ion-col>
+      <ion-item class="center" text-wrap>
+        <div class="bold large">{{location.city}}</div>
+        <div class="small">{{location.weather.weatherCondition}}</div>
+        <div>
+          <div>
             <ion-col col-4>
-              <img src="C:\Users\Guilherme\Documents\Front-end Developer\LES1718_SurfSage\src\assets\imgs\wave_icon_original.png">
-              <span class="bold small" ion-text color="text1">
-                Forecast Icon
-              </span>
+              <div class="x-large">{{location.weather.temperature}}º</div>
             </ion-col>
-          </ion-row>
-        </ion-grid>
+          </div>
+        </div>
       </ion-item>
-      <ion-item text-wrap color="primary" class="half-screen" style="padding-left: 12%;">
-        <ion-grid>
-          <ion-row >
-            <ion-col>
-              <span class="bold small" ion-text color="text3">Key</span>
-            </ion-col>
-            <ion-col>
-              <span class="bold small">Value</span>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+      <ion-item class="" text-wrap>
+        <div class="small">{{location.weather.forecastSummary_today.fcttext}}</div>
+      </ion-item>
+      <ion-item class="">
+        <div class="row">
+          <div class="col center">
+            <div class="x-small">Vento</div>
+            <div class="small">{{location.weather.wind.kph}} km/h</div>
+          </div>
+          <div class="col center">
+            <div class="x-small">Tittle</div>
+            <div class="small">Resultado</div>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item class="">
+        <div class="row">
+          <div class="col center">
+            <div class="x-small">Tittle</div>
+            <div class="small">Resultado</div>
+          </div>
+          <div class="col center">
+            <div class="x-small">Tittle</div>
+            <div class="small">Resultado</div>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item class="">
+          <div class="row">
+            <div class="col center">
+              <div class="x-small">Tittle</div>
+              <div class="small">Resultado</div>
+            </div>
+            <div class="col center">
+                <div class="x-small">Tittle</div>
+                <div class="small">Resultado</div>
+            </div>
+          </div>
+      </ion-item>
+      <ion-item class="">
+          <div class="row">
+            <div class="col center">
+              <div class="x-small">Tittle</div>
+              <div class="small">Resultado</div>
+            </div>
+            <div class="col center">
+                <div class="x-small">Tittle</div>
+                <div class="small">Resultado</div>
+            </div>
+          </div>
+      </ion-item>
+      <ion-item class="">
+          <div class="row">
+            <div class="col center">
+              <div class="x-small">Tittle</div>
+              <div class="small">Resultado</div>
+            </div>
+            <div class="col center">
+                <div class="x-small">Tittle</div>
+                <div class="small">Resultado</div>
+            </div>
+          </div>
       </ion-item>
     </ion-list>
+
 
   </div>
 </ion-content>
@@ -73,6 +105,6 @@
     <ion-col col-1 class="pull-right">
       <ion-icon name="list" class="pull-right"></ion-icon>
     </ion-col>
-    
+
   </ion-toolbar>
 </ion-footer>
