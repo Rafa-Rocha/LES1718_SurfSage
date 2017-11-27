@@ -13,16 +13,16 @@
       <button ion-item class="location" (click)="itemSelected(location)">
         <ion-row>
           <ion-col col-5>
-            <h2 class="centerLocationName">{{ location.city }}</h2>
+            <h2 class="centerLocationName locationName">{{ location.city }}</h2>
           </ion-col>
           
           <ion-col col-3>
             <!--<ion-icon ios="ios-cloud" md="md-cloud" class="pull-right"></ion-icon>-->
             <div>
               <ion-icon class="center">
-                <img src="{{ location.weather.weatherIconURL }}" class="center">
+                <img src="{{ location.weather.weatherIconURL }}" class="center weatherCondition">
               </ion-icon>
-              <h2 class="center">{{ location.weather.temperature }}º</h2>
+              <h2 class="center temperature">{{ location.weather.temperature }}º</h2>
             </div>
           </ion-col>
 
@@ -31,7 +31,7 @@
               <ion-icon class="center">
                 <img src="../assets/imgs/wave_icon.png" class="center">
               </ion-icon>
-              <h2 class="center">{{ location.weather.currentTidalHeight }} m</h2>
+              <h2 class="center tidalHeight">{{ location.weather.currentTidalHeight }} m</h2>
             </div>
           </ion-col>
         </ion-row>

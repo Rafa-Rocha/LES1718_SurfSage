@@ -29,6 +29,6 @@ describe('Adding a Location', function(){
             var savedLocation = element(by.cssContainingText('.location', 'Porto'));
             expect(savedLocation.isPresent()).toBe(true);
         });
-    })
+    });
 
 });

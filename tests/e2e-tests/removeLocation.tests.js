@@ -3,7 +3,7 @@ describe('Removing a Location', function(){
 
     beforeEach(function() {
         browser.get('/');
-        var elements = element(by.id("item-list")).all(by.tagName("ion-item"));
+        var elements = element(by.id("item-list")).all(by.tagName("ion-item-sliding"));
         savedItem = elements.get(0);
     });
 
@@ -29,6 +29,6 @@ describe('Removing a Location', function(){
             browser.actions().mouseMove(deleteButton).click().perform();
             //expect(savedItem.isPresent()).toBe(false);
         });
-    })
+    });
 
 });
