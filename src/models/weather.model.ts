@@ -29,6 +29,16 @@ export class Weather {
     public weatherCondition?: string;
     // Humidity (%)
     public humidity?: string;
+
+    public uvIndex?: string;
+    public visibility_km?: string;
+    public visibility_mile?: string;
+    public dewpoint_fahrenheit?: any;
+    public dewpoint_celsius?: any;
+
+    public feelsLike_fahrenheit?: any;
+    public feelsLike_celsius?: any;
+
     // Weather preview for the next three days
     public weatherPreviews?: WeatherPreview[];
 
