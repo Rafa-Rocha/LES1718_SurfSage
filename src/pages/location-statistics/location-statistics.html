@@ -33,6 +33,21 @@
       <ion-item class="" text-wrap>
         <div class="small" style="text-align: center">{{location.weather.forecastSummary_today.forecastText_metric}}</div>
       </ion-item>
+
+      <ion-item>
+        <div class="row" *ngFor="let preview of location.weather.weatherPreviews">
+          <div class="col center">
+            <div class="x-small">{{preview.weekday}}</div>
+          </div>
+          <div class="col center">
+            <img src="{{preview.weatherIconURL}}" class="x-small"/>
+          </div>
+          <div class="col center">
+            <div class="x-small">{{preview.temperatureHigh_celsius}}  {{preview.temperatureLow_celsius}}</div>
+          </div>
+        </div>
+      </ion-item>
+
       <ion-item class="">
         <div class="row">
           <div class="col center">
@@ -91,7 +106,7 @@
 <ion-footer>
   <ion-toolbar>
     <ion-col col-1 class="pull-right">
-      <ion-icon name="list" class="pull-right"></ion-icon>
+      <ion-icon name="list" class="pull-right" style="font-size: 200%" (click)="closePage()"></ion-icon>
     </ion-col>
 
   </ion-toolbar>

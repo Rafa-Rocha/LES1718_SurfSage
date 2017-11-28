@@ -94,4 +94,8 @@ export class LocationStatisticsPage {
     );
   }
 
+  public closePage() {
+    this.navCtrl.pop();
+  }
+
 }
