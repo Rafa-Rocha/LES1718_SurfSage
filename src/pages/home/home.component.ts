@@ -11,9 +11,10 @@ import { WorldTidesService } from '../../services/worldTides.service';
   templateUrl: 'home.html',
   providers: [WUndergroundService, WorldTidesService]
 })
-export class HomePage {
-  public locations: Places[] = [];
 
+export class HomePage {
+ 
+  public locations: Places[] = [];
   constructor(public navCtrl: NavController,
     private storageService: StorageService,
     public modalCtrl: ModalController,

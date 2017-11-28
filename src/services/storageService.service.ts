@@ -58,11 +58,18 @@ export class StorageService {
     });
   }
 
-  public saveLocations(data) {
+ public saveLocations(data) {
     this.storage.set('locations', JSON.stringify(data));
   }
 
   public getLocations() {
     return this.storage.get('locations');
   }
+
 }
+
+export function getLocations(){
+  
+    return this.storage.get('locations');
+  
+  }
