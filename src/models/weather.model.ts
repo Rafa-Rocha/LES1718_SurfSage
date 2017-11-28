@@ -1,5 +1,7 @@
 import { Places } from "./places.model";
 import { WeatherPreview } from "./weatherPreview.model";
+import { ForecastSummary } from "./forecastSummary.model";
+import { Wind } from "./wind.model";
 
 export class Weather {
     
@@ -22,7 +24,7 @@ export class Weather {
     public temperatureLow_celsius?: string;
     public temperatureLow_fahrenheit?: string;
     // Wind (degrees, dir, kph, mph)
-    public wind?: any;
+    public wind: Wind;
     // Weather condition (text description)
     public weatherCondition?: string;
     // Humidity (%)
@@ -31,9 +33,9 @@ export class Weather {
     public weatherPreviews?: WeatherPreview[];
 
     // Small forecast summary
-    public forecastSummary_today?: any;
-    public forecastSummary_tonight?: any;
-    public forecastSummary_tomorrow?: any;
+    public forecastSummary_today: ForecastSummary;
+    public forecastSummary_tonight: ForecastSummary;
+    public forecastSummary_tomorrow: ForecastSummary;
 
     constructor(id?: number, temperature?: string, weatherIconURL?: string,
                 tidalHeights?: any[]) {
@@ -42,5 +44,15 @@ export class Weather {
         this.temperature = temperature;
         this.weatherIconURL = weatherIconURL;
         this.tidalHeights = tidalHeights;
+
+        this.wind = new Wind();
+        this.forecastSummary_today = new ForecastSummary();
+        this.forecastSummary_tonight = new ForecastSummary();
+        this.forecastSummary_tomorrow = new ForecastSummary();
+        
+        this.weatherPreviews = [];
+        this.weatherPreviews[0] = new WeatherPreview();
+        this.weatherPreviews[1] = new WeatherPreview();
+        this.weatherPreviews[2] = new WeatherPreview();
     }
 }

@@ -5,6 +5,8 @@ import { Places } from '../../models/places.model';
 import { WUndergroundService } from '../../services/wUnderground.service';
 import { StorageService } from '../../services/storageService.service';
 import { WeatherPreview } from '../../models/weatherPreview.model';
+import { ForecastSummary } from '../../models/forecastSummary.model';
+import { Wind } from '../../models/wind.model';
 
 @IonicPage()
 @Component({
@@ -35,7 +37,13 @@ export class LocationStatisticsPage {
         let currentDayForecast = detailedForecast["0"];
 
         this.location.weather.humidity = currentDayForecast.avehumidity;
-        this.location.weather.wind = currentDayForecast.avewind;
+        
+        let wind = currentDayForecast.avewind;
+        this.location.weather.wind.degrees = wind.degrees;
+        this.location.weather.wind.dir = wind.dir;
+        this.location.weather.wind.kph = wind.kph;
+        this.location.weather.wind.mph = wind.mph;
+        
         this.location.weather.weatherCondition = currentDayForecast.conditions;
         this.location.weather.weekday = currentDayForecast.date.weekday;
         this.location.weather.temperatureHigh_celsius = currentDayForecast.high.celsius;
@@ -43,35 +51,43 @@ export class LocationStatisticsPage {
         this.location.weather.temperatureLow_celsius = currentDayForecast.low.celsius;
         this.location.weather.temperatureLow_fahrenheit = currentDayForecast.low.fahrenheit;
 
-        let weatherPreview1 = new WeatherPreview(detailedForecast["1"].date.weekday,
-                                                 detailedForecast["1"].icon_url,
-                                                 detailedForecast["1"].high.celsius,
-                                                 detailedForecast["1"].high.fahrenheit,
-                                                 detailedForecast["1"].low.celsius,
-                                                 detailedForecast["1"].low.fahrenheit);
-        let weatherPreview2 = new WeatherPreview(detailedForecast["2"].date.weekday,
-                                                 detailedForecast["2"].icon_url,
-                                                 detailedForecast["2"].high.celsius,
-                                                 detailedForecast["2"].high.fahrenheit,
-                                                 detailedForecast["2"].low.celsius,
-                                                 detailedForecast["2"].low.fahrenheit);
-        let weatherPreview3 = new WeatherPreview(detailedForecast["3"].date.weekday,
-                                                 detailedForecast["3"].icon_url,
-                                                 detailedForecast["3"].high.celsius,
-                                                 detailedForecast["3"].high.fahrenheit,
-                                                 detailedForecast["3"].low.celsius,
-                                                 detailedForecast["3"].low.fahrenheit);
-        let weatherPreviews = [];
-        weatherPreviews.push(weatherPreview1);
-        weatherPreviews.push(weatherPreview2);
-        weatherPreviews.push(weatherPreview3);
-
-        this.location.weather.weatherPreviews = weatherPreviews;
+        this.location.weather.weatherPreviews[0].weekday = detailedForecast["1"].date.weekday;
+        this.location.weather.weatherPreviews[0].weatherIconURL = detailedForecast["1"].icon_url;
+        this.location.weather.weatherPreviews[0].temperatureHigh_celsius = detailedForecast["1"].high.celsius;
+        this.location.weather.weatherPreviews[0].temperatureHigh_fahrenheit = detailedForecast["1"].high.fahrenheit;
+        this.location.weather.weatherPreviews[0].temperatureLow_celsius = detailedForecast["1"].low.celsius;
+        this.location.weather.weatherPreviews[0].temperatureLow_fahrenheit = detailedForecast["1"].low.fahrenheit;
         
+        this.location.weather.weatherPreviews[1].weekday = detailedForecast["2"].date.weekday;
+        this.location.weather.weatherPreviews[1].weatherIconURL = detailedForecast["2"].icon_url;
+        this.location.weather.weatherPreviews[1].temperatureHigh_celsius = detailedForecast["2"].high.celsius;
+        this.location.weather.weatherPreviews[1].temperatureHigh_fahrenheit = detailedForecast["2"].high.fahrenheit;
+        this.location.weather.weatherPreviews[1].temperatureLow_celsius = detailedForecast["2"].low.celsius;
+        this.location.weather.weatherPreviews[1].temperatureLow_fahrenheit = detailedForecast["2"].low.fahrenheit;
+        
+        this.location.weather.weatherPreviews[2].weekday = detailedForecast["3"].date.weekday;
+        this.location.weather.weatherPreviews[2].weatherIconURL = detailedForecast["3"].icon_url;
+        this.location.weather.weatherPreviews[2].temperatureHigh_celsius = detailedForecast["3"].high.celsius;
+        this.location.weather.weatherPreviews[2].temperatureHigh_fahrenheit = detailedForecast["3"].high.fahrenheit;
+        this.location.weather.weatherPreviews[2].temperatureLow_celsius = detailedForecast["3"].low.celsius;
+        this.location.weather.weatherPreviews[2].temperatureLow_fahrenheit = detailedForecast["3"].low.fahrenheit;
+
         let forecastSummary = response.forecast.txt_forecast.forecastday;
-        this.location.weather.forecastSummary_today = forecastSummary["0"];
-        this.location.weather.forecastSummary_tonight = forecastSummary["1"];
-        this.location.weather.forecastSummary_tomorrow = forecastSummary["2"];
+        
+        this.location.weather.forecastSummary_today.title = forecastSummary["0"].title;
+        this.location.weather.forecastSummary_today.weatherIconURL = forecastSummary["0"].icon_url;
+        this.location.weather.forecastSummary_today.forecastText_metric = forecastSummary["0"].fcttext_metric;
+        this.location.weather.forecastSummary_today.forecastText_imperial = forecastSummary["0"].fcttext;
+        
+        this.location.weather.forecastSummary_tonight.title = forecastSummary["1"].title;
+        this.location.weather.forecastSummary_tonight.weatherIconURL = forecastSummary["1"].icon_url;
+        this.location.weather.forecastSummary_tonight.forecastText_metric = forecastSummary["1"].fcttext_metric;
+        this.location.weather.forecastSummary_tonight.forecastText_imperial = forecastSummary["1"].fcttext;
+
+        this.location.weather.forecastSummary_tomorrow.title = forecastSummary["2"].title;
+        this.location.weather.forecastSummary_tomorrow.weatherIconURL = forecastSummary["2"].icon_url;
+        this.location.weather.forecastSummary_tomorrow.forecastText_metric = forecastSummary["2"].fcttext_metric;
+        this.location.weather.forecastSummary_tomorrow.forecastText_imperial = forecastSummary["2"].fcttext;
         
         console.log(this.location);
       }

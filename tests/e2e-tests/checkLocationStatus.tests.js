@@ -1,5 +1,4 @@
 describe("Checking a Location's current status", function(){  
-    var addLocationButton;
     var test;
 
     beforeEach(function() {
@@ -8,9 +7,9 @@ describe("Checking a Location's current status", function(){
 
     it("should check a location's current weather and tidal status", function() {   
         // check if it's the home page
-        //expect(browser.getCurrentUrl()).toMatch('/search');
+        //expect(browser.getCurrentUrl()).toMatch('/');
 
-        // wait for search results
+        // wait for saved location
         browser.sleep(5000);
 
         var temperature = element(by.css('.temperature'));
@@ -26,7 +25,7 @@ describe("Checking a Location's current status", function(){
         expect(test).toBe(true);
 
         var weatherConditionSource = weatherCondition.getAttribute('src');
-        test= (weatherConditionSource !== "");
+        test = (weatherConditionSource !== "");
         expect(test).toBe(true);
     });
 
