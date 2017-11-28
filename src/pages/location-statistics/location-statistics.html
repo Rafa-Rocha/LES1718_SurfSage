@@ -31,41 +31,41 @@
         </div>
       </ion-item>
       <ion-item class="" text-wrap>
-        <div class="small">{{location.weather.forecastSummary_today.forecastText_metric}}</div>
+        <div class="small" style="text-align: center">{{location.weather.forecastSummary_today.forecastText_metric}}</div>
       </ion-item>
       <ion-item class="">
         <div class="row">
           <div class="col center">
-            <div class="x-small">VENTO</div>
-            <div class="small">{{location.weather.wind.kph}} km/h</div>
+            <div class="x-small">WIND</div>
+            <div class="small">{{location.weather.wind.dir}} {{location.weather.wind.kph}} km/h</div>
           </div>
           <div class="col center">
-            <div class="x-small">SENSAÇÃO TÉRMICA</div>
-            <div class="small">Resultado</div>
+            <div class="x-small">FEELS LIKE</div>
+            <div class="small">{{location.weather.feelsLike_celsius}}º</div>
           </div>
         </div>
       </ion-item>
       <ion-item class="">
         <div class="row">
           <div class="col center">
-            <div class="x-small">% CHUVA</div>
-            <div class="small">Resultado</div>
+            <div class="x-small">DEW POINT</div>
+            <div class="small">{{location.weather.dewpoint_celsius}}º</div>
           </div>
           <div class="col center">
-            <div class="x-small">UMIDADE</div>
-            <div class="small">Resultado</div>
+            <div class="x-small">HUMIDITY</div>
+            <div class="small">{{location.weather.humidity}}%</div>
           </div>
         </div>
       </ion-item>
       <ion-item class="">
           <div class="row">
             <div class="col center">
-              <div class="x-small">VISIBILIDADE</div>
-              <div class="small">Resultado</div>
+              <div class="x-small">VISIBILITY</div>
+              <div class="small">{{location.weather.visibility_km}} km</div>
             </div>
             <div class="col center">
-                <div class="x-small">ÍNDICE UV</div>
-                <div class="small">Resultado</div>
+                <div class="x-small">UV INDEX</div>
+                <div class="small">{{location.weather.uvIndex}}</div>
             </div>
           </div>
       </ion-item>

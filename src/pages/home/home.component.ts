@@ -92,6 +92,13 @@ export class HomePage {
         console.log(response);
         location.weather.temperature = response.current_observation.temp_c;
         location.weather.weatherIconURL = response.current_observation.icon_url;
+        location.weather.uvIndex = response.current_observation.UV;
+        location.weather.visibility_km = response.current_observation.visibility_km;
+        location.weather.visibility_mile = response.current_observation.visibility_mi;
+        location.weather.dewpoint_celsius = response.current_observation.dewpoint_c;
+        location.weather.dewpoint_fahrenheit = response.current_observation.dewpoint_f;
+        location.weather.feelsLike_celsius = response.current_observation.feelslike_c;
+        location.weather.feelsLike_fahrenheit = response.current_observation.feelslike_f;
       }
     );
   }
