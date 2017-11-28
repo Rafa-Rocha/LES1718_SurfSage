@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Places } from '../../models/places.model';
@@ -7,6 +7,8 @@ import { StorageService } from '../../services/storageService.service';
 import { WeatherPreview } from '../../models/weatherPreview.model';
 import { ForecastSummary } from '../../models/forecastSummary.model';
 import { Wind } from '../../models/wind.model';
+
+import { Chart } from 'chart.js';
 
 @IonicPage()
 @Component({
@@ -17,6 +19,12 @@ import { Wind } from '../../models/wind.model';
 export class LocationStatisticsPage {
   public location: Places;
 
+  /* Chart Setup */
+  @ViewChild('lineCanvas') lineCanvas;
+  lineChart: any;
+  /* Chart Setup */
+
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private wUndergroundService: WUndergroundService) {
@@ -26,7 +34,36 @@ export class LocationStatisticsPage {
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad LocationStatisticsPage');
+    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+      type: 'line',
+      data: {
+        labels: this.location.weather.tidalHeightsDates,
+        datasets: [
+          {
+            label: "Height in meters",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: this.location.weather.tidalHeightsValues,
+            spanGaps: false,
+          }
+        ]
+      }
+    });
   }
 
   private getWeatherForecast(location: Places) {

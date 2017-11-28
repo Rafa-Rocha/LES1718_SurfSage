@@ -107,13 +107,35 @@ export class HomePage {
   private addingTidalData(location: Places) {
     this.worldTidesService.getTidalStatus(location.lat, location.lng).subscribe(
       (response: any) => {
-        location.weather.tidalHeights = response.heights;
-        console.log(location.weather.tidalHeights);
-        this.setCurrentTidalHeight(location);
+        
+        let tidalHeights = response.heights;
+        console.log(tidalHeights);
+        
+        var currentTime = Math.floor((new Date).getTime()/1000);
+
+        location.weather.tidalHeightsDates.length = 0;
+        location.weather.tidalHeightsValues.length = 0;
+
+        for (let tidalHeight in tidalHeights) {
+          let tideTime = tidalHeights[tidalHeight].dt;
+          
+          if (currentTime < tideTime) {
+            
+            var date = new Date(tideTime * 1000);
+            var iso = date.toISOString().match(/(\d{4}\-\d{2}\-\d{2})T(\d{2}:\d{2}:\d{2})/)
+            
+            location.weather.tidalHeightsDates.push(iso[2]);
+            location.weather.tidalHeightsValues.push(tidalHeights[tidalHeight].height);
+          }
+        }
+
+        location.weather.currentTidalHeight = 
+          Math.round(location.weather.tidalHeightsValues[0] * 10) / 10;
       }
     );
   }
 
+  /*
   private setCurrentTidalHeight(location: Places) {
     var currentTime = Math.floor((new Date).getTime()/1000);
     
@@ -125,7 +147,7 @@ export class HomePage {
         break;
       }
     }
-  }
+  }*/
 
   private itemSelected(location) {
     this.navCtrl.push('LocationStatisticsPage', {location: location});

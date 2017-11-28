@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home.component';
 import { WelcomePage } from '../pages/welcome/welcome.component';
 import { SearchPage } from '../pages/search/search.component';
+import { LocationStatisticsPage } from '../pages/location-statistics/location-statistics';
 import {Keyboard} from '@ionic-native/keyboard';
 import {PrettyJsonModule} from 'angular2-prettyjson';
 import {AgmCoreModule} from '@agm/core';
@@ -20,6 +21,8 @@ import { weatherService } from '../services/weatherService.service';
 import { WUndergroundService } from '../services/wUnderground.service';
 import { WorldTidesService } from '../services/worldTides.service';
 import { DataService } from '../core/services/data.service';
+
+
 // import { Router } from '@angular/router';
 
 @NgModule({
@@ -27,7 +30,7 @@ import { DataService } from '../core/services/data.service';
     MyApp,
     HomePage,
     WelcomePage,
-    SearchPage
+    SearchPage,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { DataService } from '../core/services/data.service';
     MyApp,
     HomePage,
     WelcomePage,
-    SearchPage
+    SearchPage,
   ],
   providers: [
     StatusBar,

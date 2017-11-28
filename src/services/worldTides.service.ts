@@ -16,7 +16,7 @@ export class WorldTidesService {
   constructor(private storage: Storage, private dataService: DataService) { }
 
   private buildUrl(lat: string, lng: string,) {
-    this.url = this.baseUrl + 'heights&lat='+ lat + '&lon=' + lng + '&key=' + this.apiKey;
+    this.url = this.baseUrl + 'heights&datum=LAT&lat='+ lat + '&lon=' + lng + '&key=' + this.apiKey;
     return this.url;
   }
 
