@@ -6,5 +6,13 @@ import { RulerUnit } from '../../models/rulerUnit.model';
 
 @Injectable()
 export class GlobalProvider {
-  public selectedRulerUnit: RulerUnit = RulerUnit.METRIC;
+  
+  selectedRulerUnit: RulerUnit;
+
+  constructor() {
+  }
+
+  setRulerUnit(rulerUnit){
+    this.selectedRulerUnit = rulerUnit;
+  }
 }

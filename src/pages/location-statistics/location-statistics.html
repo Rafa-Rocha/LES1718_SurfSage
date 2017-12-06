@@ -25,13 +25,15 @@
         <div>
           <div>
             <ion-col col-4>
-              <div id="temperature" class="x-large">{{location.weather.selectedCurrentTemperature}}º</div>
+              <div *ngIf="selectedRulerUnit === metricUnit" id="temperature" class="x-large">{{location.weather.currentTemperature_celsius}}º</div>
+              <div *ngIf="selectedRulerUnit === imperialUnit" id="temperature" class="x-large">{{location.weather.currentTemperature_fahrenheit}}º</div>
             </ion-col>
           </div>
         </div>
       </ion-item>
       <ion-item class="" text-wrap>
-        <div class="small" style="text-align: center">{{location.weather.forecastSummary_today.forecastText_metric}}</div>
+        <div *ngIf="selectedRulerUnit === metricUnit" class="small" style="text-align: center">{{location.weather.forecastSummary_today.forecastText_metric}}</div>
+        <div *ngIf="selectedRulerUnit === imperialUnit" class="small" style="text-align: center">{{location.weather.forecastSummary_today.forecastText_imperial}}</div>
       </ion-item>
 
       <ion-item>
@@ -43,7 +45,8 @@
             <img src="{{preview.weatherIconURL}}" class="x-small icon"/>
           </div>
           <div class="col center">
-            <div class="x-small highLowTemperature">{{preview.temperatureHigh_celsius}}  {{preview.temperatureLow_celsius}}</div>
+            <div *ngIf="selectedRulerUnit === metricUnit" class="x-small highLowTemperature">{{preview.temperatureHigh_celsius}}  {{preview.temperatureLow_celsius}}</div>
+            <div *ngIf="selectedRulerUnit === imperialUnit" class="x-small highLowTemperature">{{preview.temperatureHigh_fahrenheit}}  {{preview.temperatureLow_fahrenheit}}</div>
           </div>
         </div>
       </ion-item>
@@ -52,11 +55,13 @@
         <div class="row">
           <div class="col center">
             <div class="x-small">WIND</div>
-            <div id="wind" class="small">{{location.weather.wind.dir}} {{location.weather.wind.kph}} km/h</div>
+            <div *ngIf="selectedRulerUnit === metricUnit" id="wind" class="small">{{location.weather.wind.dir}} {{location.weather.wind.kph}} km/h</div>
+            <div *ngIf="selectedRulerUnit === imperialUnit" id="wind" class="small">{{location.weather.wind.dir}} {{location.weather.wind.mph}} mph</div>
           </div>
           <div class="col center">
             <div class="x-small">FEELS LIKE</div>
-            <div class="small">{{location.weather.feelsLike_celsius}}º</div>
+            <div *ngIf="selectedRulerUnit === metricUnit" class="small">{{location.weather.feelsLike_celsius}}º</div>
+            <div *ngIf="selectedRulerUnit === imperialUnit" class="small">{{location.weather.feelsLike_fahrenheit}}º</div>
           </div>
         </div>
       </ion-item>
@@ -64,7 +69,8 @@
         <div class="row">
           <div class="col center">
             <div class="x-small">DEW POINT</div>
-            <div class="small">{{location.weather.dewpoint_celsius}}º</div>
+            <div *ngIf="selectedRulerUnit === metricUnit" class="small">{{location.weather.dewpoint_celsius}}º</div>
+            <div *ngIf="selectedRulerUnit === imperialUnit" class="small">{{location.weather.dewpoint_fahrenheit}}º</div>
           </div>
           <div class="col center">
             <div class="x-small">HUMIDITY</div>
@@ -76,7 +82,8 @@
           <div class="row">
             <div class="col center">
               <div class="x-small">VISIBILITY</div>
-              <div class="small">{{location.weather.visibility_km}} km</div>
+              <div *ngIf="selectedRulerUnit === metricUnit" class="small">{{location.weather.visibility_km}} km</div>
+              <div *ngIf="selectedRulerUnit === imperialUnit" class="small">{{location.weather.visibility_mile}} miles</div>
             </div>
             <div class="col center">
                 <div class="x-small">UV INDEX</div>

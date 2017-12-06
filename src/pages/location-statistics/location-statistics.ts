@@ -9,6 +9,8 @@ import { ForecastSummary } from '../../models/forecastSummary.model';
 import { Wind } from '../../models/wind.model';
 
 import { Chart } from 'chart.js';
+import { GlobalProvider } from '../../providers/global/global.provider';
+import { RulerUnit } from '../../models/rulerUnit.model';
 
 @IonicPage()
 @Component({
@@ -18,6 +20,9 @@ import { Chart } from 'chart.js';
 })
 export class LocationStatisticsPage {
   public location: Places;
+  public selectedRulerUnit: RulerUnit;
+  public metricUnit: RulerUnit;
+  public imperialUnit: RulerUnit;
 
   /* Chart Setup */
   @ViewChild('lineCanvas') lineCanvas;
@@ -27,9 +32,14 @@ export class LocationStatisticsPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private wUndergroundService: WUndergroundService) {
+              private wUndergroundService: WUndergroundService,
+              private globalProvider: GlobalProvider) {
     
-    this.location = this.navParams.get('location');    
+    this.metricUnit = RulerUnit.METRIC;
+    this.imperialUnit = RulerUnit.IMPERIAL;
+
+    this.location = this.navParams.get('location');
+    this.selectedRulerUnit = this.globalProvider.selectedRulerUnit;    
     this.getWeatherForecast(this.location);
   }
 
