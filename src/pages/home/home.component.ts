@@ -11,18 +11,26 @@ import { RulerUnit } from '../../models/rulerUnit.model';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [WUndergroundService, WorldTidesService, GlobalProvider]
+  providers: [WUndergroundService, WorldTidesService]
 })
 
 export class HomePage {
  
   public locations: Places[] = [];
+  public selectedRulerUnit: RulerUnit;
+  public metricUnit: RulerUnit;
+  public imperialUnit: RulerUnit;
+
   constructor(public navCtrl: NavController,
     private storageService: StorageService,
     public modalCtrl: ModalController,
     private wUndergroundService: WUndergroundService,
     private worldTidesService: WorldTidesService,
     private globalProvider: GlobalProvider) {
+
+    this.metricUnit = RulerUnit.METRIC;
+    this.imperialUnit = RulerUnit.IMPERIAL;
+    this.selectedRulerUnit = this.globalProvider.selectedRulerUnit;    
 
     this.storageService.getLocations().then((data) => {
       if (data) {
@@ -40,6 +48,16 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
+  }
+
+  switchRulerUnit() {
+    if (this.globalProvider.selectedRulerUnit === RulerUnit.METRIC) {
+      this.globalProvider.setRulerUnit(RulerUnit.IMPERIAL);
+      this.selectedRulerUnit = RulerUnit.IMPERIAL;
+    } else {
+      this.globalProvider.setRulerUnit(RulerUnit.METRIC);
+      this.selectedRulerUnit = RulerUnit.METRIC;
+    }
   }
 
   openSearchPage() {
@@ -97,11 +115,6 @@ export class HomePage {
         
         location.weather.currentTemperature_celsius = response.current_observation.temp_c;
         location.weather.currentTemperature_fahrenheit = response.current_observation.temp_f;
-        
-        (this.globalProvider.selectedRulerUnit === RulerUnit.METRIC) ? 
-          location.weather.selectedCurrentTemperature = location.weather.currentTemperature_celsius :
-          location.weather.selectedCurrentTemperature = location.weather.currentTemperature_fahrenheit;
-        
         location.weather.weatherIconURL = response.current_observation.icon_url;
         location.weather.uvIndex = response.current_observation.UV;
         location.weather.visibility_km = response.current_observation.visibility_km;
@@ -110,6 +123,12 @@ export class HomePage {
         location.weather.dewpoint_fahrenheit = response.current_observation.dewpoint_f;
         location.weather.feelsLike_celsius = response.current_observation.feelslike_c;
         location.weather.feelsLike_fahrenheit = response.current_observation.feelslike_f;
+
+        /*
+        (this.globalProvider.selectedRulerUnit === RulerUnit.METRIC) ? 
+          location.weather.selectedCurrentTemperature = location.weather.currentTemperature_celsius :
+          location.weather.selectedCurrentTemperature = location.weather.currentTemperature_fahrenheit;
+        */
       }
     );
   }
