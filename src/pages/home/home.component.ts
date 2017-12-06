@@ -5,11 +5,13 @@ import { Places } from '../../models/places.model';
 import { StorageService } from '../../services/storageService.service';
 import { WUndergroundService } from '../../services/wUnderground.service';
 import { WorldTidesService } from '../../services/worldTides.service';
+import { GlobalProvider } from '../../providers/global/global.provider';
+import { RulerUnit } from '../../models/rulerUnit.model';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [WUndergroundService, WorldTidesService]
+  providers: [WUndergroundService, WorldTidesService, GlobalProvider]
 })
 
 export class HomePage {
@@ -19,7 +21,8 @@ export class HomePage {
     private storageService: StorageService,
     public modalCtrl: ModalController,
     private wUndergroundService: WUndergroundService,
-    private worldTidesService: WorldTidesService) {
+    private worldTidesService: WorldTidesService,
+    private globalProvider: GlobalProvider) {
 
     this.storageService.getLocations().then((data) => {
       if (data) {
@@ -91,7 +94,14 @@ export class HomePage {
     this.wUndergroundService.getWeatherStatus(location.lat, location.lng).subscribe(
       (response: any) => {
         console.log(response);
-        location.weather.temperature = response.current_observation.temp_c;
+        
+        location.weather.currentTemperature_celsius = response.current_observation.temp_c;
+        location.weather.currentTemperature_fahrenheit = response.current_observation.temp_f;
+        
+        (this.globalProvider.selectedRulerUnit === RulerUnit.METRIC) ? 
+          location.weather.selectedCurrentTemperature = location.weather.currentTemperature_celsius :
+          location.weather.selectedCurrentTemperature = location.weather.currentTemperature_fahrenheit;
+        
         location.weather.weatherIconURL = response.current_observation.icon_url;
         location.weather.uvIndex = response.current_observation.UV;
         location.weather.visibility_km = response.current_observation.visibility_km;
