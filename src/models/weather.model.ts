@@ -7,7 +7,9 @@ export class Weather {
     
     public id: number;
     public location?: string
-    public temperature?: string;
+    public selectedCurrentTemperature?: string;
+    public currentTemperature_celsius?: string;
+    public currentTemperature_fahrenheit?: string;
     public weatherIconURL?: string;
     // Tidal Heights
     public tidalHeightsDates?: any[];
@@ -48,10 +50,10 @@ export class Weather {
     public forecastSummary_tonight: ForecastSummary;
     public forecastSummary_tomorrow: ForecastSummary;
 
-    constructor(id?: number, temperature?: string, weatherIconURL?: string) {
+    constructor(id?: number, selectedCurrentTemperature?: string, weatherIconURL?: string) {
         
         this.id = id;
-        this.temperature = temperature;
+        this.selectedCurrentTemperature = selectedCurrentTemperature;
         this.weatherIconURL = weatherIconURL;
         
         this.tidalHeightsDates = [];

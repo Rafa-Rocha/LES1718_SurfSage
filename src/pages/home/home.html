@@ -22,7 +22,7 @@
               <ion-icon class="center">
                 <img src="{{ location.weather.weatherIconURL }}" class="center weatherCondition">
               </ion-icon>
-              <h2 class="center temperature">{{ location.weather.temperature }}º</h2>
+              <h2 class="center temperature">{{ location.weather.selectedCurrentTemperature }}º</h2>
             </div>
           </ion-col>
 
@@ -43,5 +43,15 @@
     </ion-item-sliding>
   </ion-list>
 
-  <ion-icon class="addLocation buttoncenter large" ios="ios-add-circle" md="md-add-circle" (click)="openSearchPage()"></ion-icon>
+  <div class="container">
+    <div class="left" style="margin-left: 4%;">
+      <div class="container">
+        <div class="left">ºC </div>
+        <div class="left"> / </div>
+        <div class="right"> ºF</div>
+      </div>
+    </div>
+    
+    <ion-icon class="pull-right addLocation large" style="margin-right: 4%;" ios="ios-add-circle" md="md-add-circle" (click)="openSearchPage()"></ion-icon>
+  </div>
 </ion-content>

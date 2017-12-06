@@ -8,7 +8,7 @@ import { WUndergroundService } from '../services/wUnderground.service';
 import { WorldTidesService } from '../services/worldTides.service';
 import { Storage } from "@ionic/storage";
 
-describe('Models' , ()=> {
+describe('Places Models' , ()=> {
     it('Create Place', () => {
     
       

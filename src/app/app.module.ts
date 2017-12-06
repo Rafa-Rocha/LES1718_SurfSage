@@ -21,6 +21,7 @@ import { weatherService } from '../services/weatherService.service';
 import { WUndergroundService } from '../services/wUnderground.service';
 import { WorldTidesService } from '../services/worldTides.service';
 import { DataService } from '../core/services/data.service';
+import { GlobalProvider } from '../providers/global/global.provider';
 
 
 // import { Router } from '@angular/router';
@@ -64,6 +65,7 @@ import { DataService } from '../core/services/data.service';
     WUndergroundService,
     WorldTidesService,
     DataService,
+    GlobalProvider,
     // Router
   ]
 })

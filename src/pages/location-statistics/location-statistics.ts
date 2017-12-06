@@ -38,6 +38,16 @@ export class LocationStatisticsPage {
       type: 'line',
       data: {
         labels: this.location.weather.tidalHeightsDates,
+        options: {
+          scales: {
+            xAxes: [{
+              display: false
+            }],
+            yAxes: [{
+              display: false
+            }],
+          }
+        },
         datasets: [
           {
             label: "Height in meters",
