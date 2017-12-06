@@ -47,9 +47,23 @@
   <div class="container">
     <div class="left" style="margin-left: 4%;">
       <div class="container" (click)="switchRulerUnit()">
-        <div class="left">ºC </div>
+        <div class="left">
+          <div *ngIf="selectedRulerUnit === metricUnit" class="selected">
+            ºC
+          </div>
+          <div *ngIf="selectedRulerUnit === imperialUnit">
+            ºC
+          </div>
+        </div>
         <div class="left"> / </div>
-        <div class="right"> ºF</div>
+        <div class="right">
+          <div *ngIf="selectedRulerUnit === metricUnit">
+            ºF
+          </div>
+          <div *ngIf="selectedRulerUnit === imperialUnit" class="selected">
+            ºF
+          </div>
+        </div>
       </div>
     </div>
     
