@@ -30,7 +30,8 @@ export class WelcomePage {
     addModal.onDidDismiss((location) => {
       if (location) {
         this.saveItem(location);
-        this.navCtrl.push(HomePage);
+        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.popToRoot();
       }
     });
 
