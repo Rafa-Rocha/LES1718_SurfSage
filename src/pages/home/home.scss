@@ -1,40 +1,55 @@
-.pull-right {
-    float: right;
-    &::after {
-        clear: both;
-        content: '';
-    }
-}
 
-.center {
-    display: table-cell;
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
 
-.centerLocationName {
-    top: 50%;
-    position: absolute;
-}
 
-.container {
-    overflow: hidden;
-}
 
 .left{
     float:left;
-    overflow:hidden;
+   
 }
 
 .right{
     overflow:hidden;
 }
 
-.selected {
-    font-weight: bold;
-    /*color: white;*/
+
+
+.no-padding {
+    padding: 0px !important;
+    background-color: transparent !important;
+    font-size: 50px;
+    //background-image: url('../assets/imgs/4225_SecretReef_1602_48x32_U1.jpg');
+
 }
+.list{
+    background-color: transparent !important;
+    font-size: 50px;
+  }
+      .item{
+        background-color: transparent !important ;
+        border: 0  !important;
+       
+
+
+      }
+      .item-content{
+          background-color: transparent !important ;
+          font-size: 50px !important;
+      
+      }
+
+      h2 {
+        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+        font-size: 20px !important;
+        color: white;
+        
+  
+        font-weight: bold !important;
+        display: inline-block;
+        text-align: center!important;
+    }
+    .scroll-bar-indicator
+    {
+        display: none;
+    }
+    
+  

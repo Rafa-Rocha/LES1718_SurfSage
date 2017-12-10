@@ -14,28 +14,58 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.child-item {
+  background-color: grey;
+  padding: 0;
+  
 
+}
+.child-title {
+ text-transform: uppercase;
+ color: white;
+ padding: 16px;
+ margin: -1px;
+ 
+}
+.grandchild-count {
+ float: right;
+ padding-right: 16px;
+ font-weight: bold;
+}
 .wallpaper {
-  background-image: url('../assets/imgs/wallpaper-dark_medium.jpg');
+  background-image: url('../assets/imgs/beach.png');
   background-repeat: no-repeat;
   background-position: center;
+  opacity: 1;
+  font-family: "Helvetica Neue", Helvetica;
+  font-size: 20px;
+  color: white;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 1000;
+  line-height: 26.4px;
 }
 
-
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
 
 .bar-buttons,.toolbar-title {
   color: #fff;
 }
 
-.wraptocenter {
-  display: table-cell;
-  text-align: center;
 
-  width: 200px;
-  height: 200px;
-  margin-left: auto;
-  margin-right: auto;
+.searchResult {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: white;
+}
+
+.wraptocenter {
   display: block;
+  margin: auto;
+  width: 40%;
 }
 
 .buttoncenter {
@@ -65,7 +95,7 @@
 }
 
 .large {
-  font-size: 30px;
+  font-size: 50px;
 }
 
 .pull-right {
@@ -80,8 +110,7 @@
 // Copied
 
 .full-screen {
-  height: 100% !important;
-  margin: 0 !important;
+  max-width: 100% !important;
 }
 
 .half-screen {
@@ -159,39 +188,64 @@ ion-list-header {
 
 .x-large {
   font-size: 3.2rem !important;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: white;
 }
 
 .large {
-  font-size: 2.6rem !important;
+
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  color: white;
+  
 }
 
 .medium {
-  font-size: 2.2rem !important;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  color: white;
 }
 
 .small {
-  font-size: 1.8rem !important;
+  
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: white;
+
 }
 
 .x-small {
   font-size: 1.6rem !important;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: white;
+  font-weight: bold !important;
 }
 
 @media only screen and (max-width: 320px) and (orientation: portrait) {
   .xx-large {
     font-size: 3.2rem !important;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: white;
   }
   .x-large {
     font-size: 2.6rem !important;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: white;
   }
   .large {
     font-size: 2.2rem !important;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: white;
   }
   .medium {
     font-size: 1.8rem !important;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: white;
   }
   .small {
     font-size: 1.6rem !important;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: white;
   }
   .x-small {
     font-size: 1.4rem !important;
@@ -223,3 +277,14 @@ ion-list-header {
 }
 
 
+ h2 {
+        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-size: 50px;
+        color: white;
+        font-style: normal;
+        font-variant: normal;
+  
+      
+        display: inline-block;
+        text-align: center !important;
+    }

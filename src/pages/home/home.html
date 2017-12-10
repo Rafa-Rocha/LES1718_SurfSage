@@ -5,36 +5,42 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="wallpaper">
 
-  <ion-list id="item-list">
-    <ion-item-sliding *ngFor="let location of locations">
+<ion-content   class="wallpaper">
 
-      <button ion-item class="location" (click)="itemSelected(location)">
-        <ion-row>
+  <ion-list class="item no-padding" id="item">
+    <ion-item-sliding class="item" *ngFor="let location of locations">
+ 
+      <button ion-item  (click)="itemSelected(location)">
+        <ion-row >
           <ion-col col-5>
-            <h2 class="centerLocationName locationName">{{ location.city }}</h2>
+            <h2 >{{ location.city }}</h2>
           </ion-col>
           
           <ion-col col-3>
             <!--<ion-icon ios="ios-cloud" md="md-cloud" class="pull-right"></ion-icon>-->
-            <div>
+            <div >
               <ion-icon class="center">
-                <img src="{{ location.weather.weatherIconURL }}" class="center weatherCondition">
+               <img src="{{ location.weather.weatherIconURL }}"  width="25">
               </ion-icon>
-              <h2 *ngIf="selectedRulerUnit === metricUnit" class="center temperature">{{ location.weather.currentTemperature_celsius }}º</h2>
-              <h2 *ngIf="selectedRulerUnit === imperialUnit" class="center temperature">{{ location.weather.currentTemperature_fahrenheit }}º</h2>
+              <h2 *ngIf="selectedRulerUnit === metricUnit" >{{ location.weather.currentTemperature_celsius }}º</h2>
+              <h2 *ngIf="selectedRulerUnit === imperialUnit" >{{ location.weather.currentTemperature_fahrenheit }}º</h2>
             </div>
           </ion-col>
 
           <ion-col col-3>
-            <div>
-              <ion-icon class="center">
-                <img src="../assets/imgs/wave_icon.png" class="center">
-              </ion-icon>
-              <h2 class="center tidalHeight">{{ location.weather.currentTidalHeight }} m</h2>
+            <div >
+             
+              <ion-icon >
+                <img src="../assets/imgs/io.png" class="center weatherCondition" width="40">
+               </ion-icon>
+        
+              <h2 >{{ location.weather.currentTidalHeight }} M </h2>
+            
             </div>
+            
           </ion-col>
+        
         </ion-row>
       </button>
       <ion-item-options>
@@ -67,6 +73,6 @@
       </div>
     </div>
     
-    <ion-icon class="pull-right addLocation large" style="margin-right: 4%;" ios="ios-add-circle" md="md-add-circle" (click)="openSearchPage()"></ion-icon>
+    <ion-icon class="pull-right addLocation " style="margin-right: 4%;" ios="ios-add-circle" md="md-add-circle" (click)="openSearchPage()"></ion-icon>
   </div>
 </ion-content>

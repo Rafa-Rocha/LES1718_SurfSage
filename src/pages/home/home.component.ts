@@ -115,7 +115,7 @@ export class HomePage {
         
         location.weather.currentTemperature_celsius = response.current_observation.temp_c;
         location.weather.currentTemperature_fahrenheit = response.current_observation.temp_f;
-        location.weather.weatherIconURL = response.current_observation.icon_url;
+       // location.weather.weatherIconURL = response.current_observation.icon_url;
         location.weather.uvIndex = response.current_observation.UV;
         location.weather.visibility_km = response.current_observation.visibility_km;
         location.weather.visibility_mile = response.current_observation.visibility_mi;
@@ -123,7 +123,10 @@ export class HomePage {
         location.weather.dewpoint_fahrenheit = response.current_observation.dewpoint_f;
         location.weather.feelsLike_celsius = response.current_observation.feelslike_c;
         location.weather.feelsLike_fahrenheit = response.current_observation.feelslike_f;
-
+        
+       location.weather.weatherIconURL = response.current_observation.icon_url.replace("http://icons.wxug.com/i/c/k/", "../assets/imgs/"); 
+      location.weather.weatherIconURL = location.weather.weatherIconURL.replace(".gif", ".png"); 
+        console.log(location.weather.weatherIconURL)
         /*
         (this.globalProvider.selectedRulerUnit === RulerUnit.METRIC) ? 
           location.weather.selectedCurrentTemperature = location.weather.currentTemperature_celsius :
