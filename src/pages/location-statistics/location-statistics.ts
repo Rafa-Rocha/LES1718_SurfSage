@@ -159,7 +159,7 @@ export class LocationStatisticsPage {
         this.location.weather.forecastSummary_tomorrow.forecastText_metric = forecastSummary["2"].fcttext_metric;
         this.location.weather.forecastSummary_tomorrow.forecastText_imperial = forecastSummary["2"].fcttext;
         
-        console.log(this.location);
+        //console.log(this.location);
       }
     );
   }
