@@ -22,7 +22,6 @@
             <div >
               <ion-icon class="center">
                <img src="{{ location.weather.weatherIconURL }}"  width="25">
-                <img src="{{ location.weather.weatherIconURL }}" class="center weatherCondition"/>
               </ion-icon>
               <h2 *ngIf="selectedRulerUnit === metricUnit" >{{ location.weather.currentTemperature_celsius }}º</h2>
               <h2 *ngIf="selectedRulerUnit === imperialUnit" >{{ location.weather.currentTemperature_fahrenheit }}º</h2>
