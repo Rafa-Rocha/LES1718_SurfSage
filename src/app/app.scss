@@ -36,6 +36,7 @@
   background-image: url('../assets/imgs/beach.png');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
   opacity: 1;
   font-family: "Helvetica Neue", Helvetica;
   font-size: 15px;
@@ -219,7 +220,7 @@ ion-list-header {
   font-size: 1.6rem !important;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   color: white;
-  font-weight: bold !important;
+  //font-weight: bold !important;
 }
 
 @media only screen and (max-width: 320px) and (orientation: portrait) {
@@ -253,7 +254,7 @@ ion-list-header {
   }
 }
 
-@-webkit-keyframes slidingAnimation {
+@keyframes slidingAnimation {
   0% {
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0);
@@ -278,14 +279,12 @@ ion-list-header {
 }
 
 
- h2 {
-        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-        font-size: 50px;
-        color: white;
-        font-style: normal;
-        font-variant: normal;
-  
-      
-        display: inline-block;
-        text-align: center !important;
-    }
+h2 {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  color: white;
+  font-style: normal;
+  font-variant: normal;
+  display: inline-block;
+  text-align: center !important;
+}
