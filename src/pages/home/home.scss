@@ -7,6 +7,13 @@
     overflow:hidden;
 }
 
+.ellipsis {
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+
 .no-padding {
     padding: 0px !important;
     background-color: transparent !important;
