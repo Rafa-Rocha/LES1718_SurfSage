@@ -111,7 +111,7 @@ export class LocationStatisticsPage {
         this.location.weather.weatherPreviews[0].weekday = detailedForecast["1"].date.weekday;
         this.location.weather.weatherPreviews[0].weatherIconURL = detailedForecast["1"].icon_url;
         
-        this.location.weather.weatherPreviews[0].weatherIconURL = this.location.weather.weatherPreviews[0].weatherIconURL.replace("http://icons.wxug.com/i/c/k/", "../assets/imgs/");
+        this.location.weather.weatherPreviews[0].weatherIconURL = this.location.weather.weatherPreviews[0].weatherIconURL.replace("http://icons.wxug.com/i/c/k/", "assets/imgs/");
         this.location.weather.weatherPreviews[0].weatherIconURL = this.location.weather.weatherPreviews[0].weatherIconURL.replace(".gif", ".png"); 
         
         this.location.weather.weatherPreviews[0].temperatureHigh_celsius = detailedForecast["1"].high.celsius;
@@ -126,7 +126,7 @@ export class LocationStatisticsPage {
         this.location.weather.weatherPreviews[1].temperatureLow_celsius = detailedForecast["2"].low.celsius;
         this.location.weather.weatherPreviews[1].temperatureLow_fahrenheit = detailedForecast["2"].low.fahrenheit;
         
-        this.location.weather.weatherPreviews[1].weatherIconURL = this.location.weather.weatherPreviews[1].weatherIconURL.replace("http://icons.wxug.com/i/c/k/", "../assets/imgs/");
+        this.location.weather.weatherPreviews[1].weatherIconURL = this.location.weather.weatherPreviews[1].weatherIconURL.replace("http://icons.wxug.com/i/c/k/", "assets/imgs/");
         this.location.weather.weatherPreviews[1].weatherIconURL = this.location.weather.weatherPreviews[1].weatherIconURL.replace(".gif", ".png"); 
    
 
@@ -138,7 +138,7 @@ export class LocationStatisticsPage {
         this.location.weather.weatherPreviews[2].temperatureLow_celsius = detailedForecast["3"].low.celsius;
         this.location.weather.weatherPreviews[2].temperatureLow_fahrenheit = detailedForecast["3"].low.fahrenheit;
 
-        this.location.weather.weatherPreviews[2].weatherIconURL = this.location.weather.weatherPreviews[2].weatherIconURL.replace("http://icons.wxug.com/i/c/k/", "../assets/imgs/");
+        this.location.weather.weatherPreviews[2].weatherIconURL = this.location.weather.weatherPreviews[2].weatherIconURL.replace("http://icons.wxug.com/i/c/k/", "assets/imgs/");
         this.location.weather.weatherPreviews[2].weatherIconURL = this.location.weather.weatherPreviews[2].weatherIconURL.replace(".gif", ".png"); 
    
 

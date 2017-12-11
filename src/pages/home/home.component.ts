@@ -124,8 +124,8 @@ export class HomePage {
         location.weather.feelsLike_celsius = response.current_observation.feelslike_c;
         location.weather.feelsLike_fahrenheit = response.current_observation.feelslike_f;
         
-       location.weather.weatherIconURL = response.current_observation.icon_url.replace("http://icons.wxug.com/i/c/k/", "../assets/imgs/"); 
-      location.weather.weatherIconURL = location.weather.weatherIconURL.replace(".gif", ".png"); 
+       location.weather.weatherIconURL = response.current_observation.icon_url.replace("http://icons.wxug.com/i/c/k/", "assets/imgs/"); 
+       location.weather.weatherIconURL = location.weather.weatherIconURL.replace(".gif", ".png"); 
         console.log(location.weather.weatherIconURL)
         /*
         (this.globalProvider.selectedRulerUnit === RulerUnit.METRIC) ? 

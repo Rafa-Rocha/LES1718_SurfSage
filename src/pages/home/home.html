@@ -6,7 +6,7 @@
 </ion-header>
 
 
-<ion-content   class="wallpaper">
+<ion-content class="wallpaper">
 
   <ion-list class="item no-padding" id="item">
     <ion-item-sliding class="item" *ngFor="let location of locations">
@@ -18,10 +18,9 @@
           </ion-col>
           
           <ion-col col-3>
-            <!--<ion-icon ios="ios-cloud" md="md-cloud" class="pull-right"></ion-icon>-->
             <div >
               <ion-icon class="center">
-               <img src="{{ location.weather.weatherIconURL }}"  width="25">
+               <img src="{{ location.weather.weatherIconURL }}" width="25">
               </ion-icon>
               <h2 *ngIf="selectedRulerUnit === metricUnit" >{{ location.weather.currentTemperature_celsius }}º</h2>
               <h2 *ngIf="selectedRulerUnit === imperialUnit" >{{ location.weather.currentTemperature_fahrenheit }}º</h2>
@@ -30,17 +29,12 @@
 
           <ion-col col-3>
             <div >
-             
               <ion-icon >
-                <img src="../assets/imgs/io.png" class="center weatherCondition" width="40">
+                <img src="assets/imgs/io.png" class="center weatherCondition" width="40">
                </ion-icon>
-        
               <h2 >{{ location.weather.currentTidalHeight }} M </h2>
-            
             </div>
-            
           </ion-col>
-        
         </ion-row>
       </button>
       <ion-item-options>
@@ -55,15 +49,15 @@
       <div class="container" (click)="switchRulerUnit()">
         <div class="left">
           <div *ngIf="selectedRulerUnit === metricUnit" class="selected">
-            ºC
+            ºC 
           </div>
-          <div *ngIf="selectedRulerUnit === imperialUnit">
-            ºC
+          <div *ngIf="selectedRulerUnit === imperialUnit" class="not-selected">
+            ºC 
           </div>
         </div>
-        <div class="left"> / </div>
+        <div class="left not-selected"> / </div>
         <div class="right">
-          <div *ngIf="selectedRulerUnit === metricUnit">
+          <div *ngIf="selectedRulerUnit === metricUnit" class="not-selected">
             ºF
           </div>
           <div *ngIf="selectedRulerUnit === imperialUnit" class="selected">
