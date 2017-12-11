@@ -11,6 +11,11 @@
     overflow:hidden;
 }
 
+.ellipsis {
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
 
 
 .no-padding {
