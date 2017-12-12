@@ -16,8 +16,6 @@ export class StorageService {
   }
 
   public saveLocations(data) {
-    console.log('Aqui');
-    console.log(data);
     this.storage.set('locations', JSON.stringify(data));
   }
 
