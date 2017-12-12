@@ -3,7 +3,7 @@ describe('Removing a Location', function(){
 
     beforeEach(function() {
         browser.get('/');
-        var elements = element(by.id("item-list")).all(by.tagName("ion-item-sliding"));
+        var elements = element(by.id("item")).all(by.tagName("ion-item-sliding"));
         savedItem = elements.get(0);
     });
 
