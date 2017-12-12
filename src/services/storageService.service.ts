@@ -15,7 +15,9 @@ export class StorageService {
     });
   }
 
- public saveLocations(data) {
+  public saveLocations(data) {
+    console.log('Aqui');
+    console.log(data);
     this.storage.set('locations', JSON.stringify(data));
   }
 
@@ -25,8 +27,6 @@ export class StorageService {
 
 }
 
-export function getLocations(){
-  
-    return this.storage.get('locations');
-  
-  }
+export function getLocations() {
+  return this.storage.get('locations');
+}

@@ -15,12 +15,12 @@ export class WUndergroundService {
 
   constructor(private storage: Storage, private dataService: DataService) { }
 
-  private buildUrlForCurrentWeather(lat: string, lng: string,) {
+  public buildUrlForCurrentWeather(lat: string, lng: string,) {
     let url = this.baseUrl + this.apiKey + '/conditions/q/' + lat + ',' + lng + '.json';
     return url;
   }
 
-  private buildUrlForWeatherForecast(lat: string, lng: string,) {
+  public buildUrlForWeatherForecast(lat: string, lng: string,) {
     let url = this.baseUrl + this.apiKey + '/forecast/q/' + lat + ',' + lng + '.json';
     return url;
   }

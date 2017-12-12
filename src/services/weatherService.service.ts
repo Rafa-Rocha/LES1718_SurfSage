@@ -10,20 +10,20 @@ export class weatherService {
   constructor(private storage: Storage) { }
 
   public get(): Weather[] {
-      let response: Weather[] = [];
+    let response: Weather[] = [];
     this.storage.get('weather').then((data) => {
-        console.log(data);
-        response = (data) ? data : [];
+      console.log(data);
+      response = (data) ? data : [];
     });
     return response;
   }
 
   public add(weather: Weather) {
     this.storage.get('weather').then((data) => {
-        data = (data) ? data : data = [];
-        data.push(JSON.stringify(weather));
-        this.storage.set('weather', data);
-      });
+      data = (data) ? data : data = [];
+      data.push(JSON.stringify(weather));
+      this.storage.set('weather', data);
+    });
   }
 
 

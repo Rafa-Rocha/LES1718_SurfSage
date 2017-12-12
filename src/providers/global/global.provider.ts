@@ -15,4 +15,8 @@ export class GlobalProvider {
   setRulerUnit(rulerUnit){
     this.selectedRulerUnit = rulerUnit;
   }
+
+  getRulerUnit(){
+    return this.selectedRulerUnit;
+  }
 }

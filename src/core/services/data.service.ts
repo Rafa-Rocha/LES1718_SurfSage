@@ -31,7 +31,7 @@ export class DataService {
   // Provide the *public* Observable that clients can subscribe to
   public pendingCommands$: Observable<number>;
 
-  constructor(public http: Http, ) { // public us: UtilityService,  private router?: Router
+  constructor(public http: Http) { // public us: UtilityService,  private router?: Router
     this.pendingCommands$ = this.pendingCommandsSubject.asObservable();
   }
 

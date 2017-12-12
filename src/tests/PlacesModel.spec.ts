@@ -10,34 +10,21 @@ import { Storage } from "@ionic/storage";
 
 describe('Models', () => {
     it('Create Place', () => {
+        var location = new Places('Amsterdã', 'Países Baixos', '52.3702157', '4.895167900000001');
 
-
-        var location = new Places('Country', 'Country', 'Latitude', 'Longitude');
-
-
-        expect(location.city).toEqual('Country');
-        expect(location.country).toEqual('Country');
-        expect(location.lat).toEqual('Latitude');
-        expect(location.lng).toEqual('Longitude');
-
-
-
-    })
+        expect(location.city).toEqual('Amsterdã');
+        expect(location.country).toEqual('Países Baixos');
+        expect(location.lat).toEqual('52.3702157');
+        expect(location.lng).toEqual('4.895167900000001');
+    });
 
     it('Create Weather', () => {
-
-
-        var weatherArray = new Weather(1, '100ºC', 'icon.png');
-
+        var weatherArray = new Weather(1, '10', '../../assets/imgs/io.png');
 
         expect(weatherArray.id).toEqual(1);
-        expect(weatherArray.temperature).toEqual('100ºC');
-        expect(weatherArray.weatherIconURL).toEqual('icon.png');
-
-
-
-
-    })
+        expect(weatherArray.selectedCurrentTemperature).toEqual('10');
+        expect(weatherArray.weatherIconURL).toEqual('../../assets/imgs/io.png');
+    });
 
 
 })

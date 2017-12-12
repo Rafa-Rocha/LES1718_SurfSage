@@ -12,9 +12,9 @@ export class GoogleMapsService {
   private baseUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
   private url;
 
-  constructor(private storage: Storage, public http: Http,) { }
+  constructor(private storage?: Storage, public http?: Http) { }
 
-  private buildUrl(city: string, country: string) {
+  public buildUrl(city: string, country: string) {
     // replace space characters with plus symbol
     let cityUrl = city.replace(/ /g, '+');
     let countryUrl = country.replace(/ /g, '+');
