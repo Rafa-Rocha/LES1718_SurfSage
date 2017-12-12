@@ -11,28 +11,28 @@
   <ion-list class="item no-padding" id="item">
     <ion-item-sliding class="item" *ngFor="let location of locations">
  
-      <button ion-item  (click)="itemSelected(location)">
+      <button ion-item class="location"  (click)="itemSelected(location)">
         <ion-row >
           <ion-col col-5>
-            <h2 class="ellipsis" >{{ location.city }}</h2>
+            <h2 class="ellipsis locationName" >{{ location.city }}</h2>
           </ion-col>
           
           <ion-col col-3>
             <div >
               <ion-icon class="center">
-               <img src="{{ location.weather.weatherIconURL }}" width="25">
+               <img class="weatherCondition" src="{{ location.weather.weatherIconURL }}" width="25">
               </ion-icon>
-              <h2 *ngIf="selectedRulerUnit === metricUnit" >{{ location.weather.currentTemperature_celsius }}º</h2>
-              <h2 *ngIf="selectedRulerUnit === imperialUnit" >{{ location.weather.currentTemperature_fahrenheit }}º</h2>
+              <h2 *ngIf="selectedRulerUnit === metricUnit" class="temperature">{{ location.weather.currentTemperature_celsius }}º</h2>
+              <h2 *ngIf="selectedRulerUnit === imperialUnit" class="temperature">{{ location.weather.currentTemperature_fahrenheit }}º</h2>
             </div>
           </ion-col>
 
           <ion-col col-3>
             <div >
               <ion-icon >
-                <img src="assets/imgs/io.png" class="center weatherCondition" width="40">
-               </ion-icon>
-              <h2 >{{ location.weather.currentTidalHeight }} M </h2>
+                <img src="assets/imgs/io.png" class="center tidalHeight" width="40">
+              </ion-icon>
+              <h2 >{{ location.weather.currentTidalHeight }} m</h2>
             </div>
           </ion-col>
         </ion-row>
@@ -46,7 +46,7 @@
 
   <div class="container">
     <div class="left" style="margin-left: 4%;">
-      <div class="container" (click)="switchRulerUnit()">
+      <div class="switchRulerUnit container" (click)="switchRulerUnit()">
         <div class="left">
           <div *ngIf="selectedRulerUnit === metricUnit" class="selected">
             ºC 

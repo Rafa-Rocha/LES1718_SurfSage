@@ -9,7 +9,9 @@ exports.config = {
     specs: [
         'e2e-tests/**/searchLocation.tests.js',
         'e2e-tests/**/addLocation.tests.js',
+        'e2e-tests/**/switchRulerUnits.tests.js',
         'e2e-tests/**/checkLocationStatus.tests.js',
+        'e2e-tests/**/switchRulerUnits.tests.js',
         'e2e-tests/**/removeLocation.tests.js',
         'e2e-tests/**/*.tests.js',
     ],
