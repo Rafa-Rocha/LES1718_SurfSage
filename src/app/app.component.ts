@@ -35,19 +35,7 @@ export class MyApp {
 
   }
 
-  // private seeStatus() {
-
-  //   this.placesService.hasPlaces().subscribe(response => {
-  //     if (response) {
-  //       this.rootPage = HomePage;
-  //     } else {
-  //       this.rootPage = WelcomePage;
-  //     }
-  //   });
-  // }
-
   private setRootPage() {
-    console.log('setting root page...');
     this.storage.get('locations').then(item => {
       if (item) {
         this.rootPage = HomePage

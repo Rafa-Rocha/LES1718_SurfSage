@@ -38,13 +38,9 @@ export class HomePage {
         this.locations.forEach(element => {
           this.addingWeatherData(element);
           this.addingTidalData(element);
-          //console.log(element);
         });
       }
     });
-
-
-    //this.storageService.getPlaces(this.locations);
   }
 
   ionViewWillEnter() {
@@ -70,7 +66,6 @@ export class HomePage {
         this.locations.forEach(element => {
           this.addingWeatherData(element);
           this.addingTidalData(element);
-         console.log(element);
         });
       }
     });
@@ -111,11 +106,9 @@ export class HomePage {
   private addingWeatherData(location: Places) {
     this.wUndergroundService.getWeatherStatus(location.lat, location.lng).subscribe(
       (response: any) => {
-        console.log(response);
         
         location.weather.currentTemperature_celsius = response.current_observation.temp_c;
         location.weather.currentTemperature_fahrenheit = response.current_observation.temp_f;
-       // location.weather.weatherIconURL = response.current_observation.icon_url;
         location.weather.uvIndex = response.current_observation.UV;
         location.weather.visibility_km = response.current_observation.visibility_km;
         location.weather.visibility_mile = response.current_observation.visibility_mi;
@@ -126,12 +119,7 @@ export class HomePage {
         
        location.weather.weatherIconURL = response.current_observation.icon_url.replace("http://icons.wxug.com/i/c/k/", "assets/imgs/"); 
        location.weather.weatherIconURL = location.weather.weatherIconURL.replace(".gif", ".png"); 
-        console.log(location.weather.weatherIconURL)
-        /*
-        (this.globalProvider.selectedRulerUnit === RulerUnit.METRIC) ? 
-          location.weather.selectedCurrentTemperature = location.weather.currentTemperature_celsius :
-          location.weather.selectedCurrentTemperature = location.weather.currentTemperature_fahrenheit;
-        */
+
       }
     );
   }
@@ -141,7 +129,6 @@ export class HomePage {
       (response: any) => {
         
         let tidalHeights = response.heights;
-        console.log(tidalHeights);
         
         var currentTime = Math.floor((new Date).getTime()/1000);
 

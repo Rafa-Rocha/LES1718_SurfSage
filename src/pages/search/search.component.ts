@@ -61,7 +61,6 @@ export class SearchPage {
     
     // Get chosen location's coordinates and store it.
     this.googleMapsService.getLocationCoordinates(city, country).subscribe(coordinates => {
-      console.log(coordinates);
       
       let result = coordinates.results[0].geometry.location;
       
@@ -72,7 +71,6 @@ export class SearchPage {
                   "\nLatitude: " + latitude + "\nLongitude: " + longitude);
       
       let place = new Places(city, country, latitude, longitude);
-      console.log(this.weatherService.get());
       this.viewCtrl.dismiss(place);
     });
   }
