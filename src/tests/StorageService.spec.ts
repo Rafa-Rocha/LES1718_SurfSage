@@ -27,7 +27,6 @@ describe('Google Maps Service', () => {
     });
 
     it('Should set localstorage', () => {
-        
         localStorage.setItem('locationMock', JSON.stringify(data));
         const result = localStorage.getItem('locationMock');
         expect(result).toBe(JSON.stringify(data));
@@ -38,5 +37,10 @@ describe('Google Maps Service', () => {
         const result = localStorage.getItem('locationMock');
         expect(JSON.parse(result).length).toBe(data.length);
     });
+    it('Should delete', () => {
+        localStorage.removeItem('locationMock');
+        expect(localStorage.getItem('locationMock')).toBeFalsy();
+    });
+
 
 });
