@@ -1,0 +1,7 @@
+{
+    "name": "SurfSage",
+    "description": "App Description",
+    "repository": "https://github.com/Rafa-Rocha/LES1718_SurfSage",
+    "logo": "",
+    "keywords": ["ionic3", "heroku", "surfsage"]
+}
